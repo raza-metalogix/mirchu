@@ -6,7 +6,6 @@ import fonts from "../../utilities/fonts";
 import context from "./context";
 const WelcomeScreen = () => {
 	const nav = useNavigation()
-
 	return (
 		<SafeAreaView style={_styles.container}>
 			<StatusBar
