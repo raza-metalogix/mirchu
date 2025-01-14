@@ -17,7 +17,7 @@ const RegisterScreen = () => {
 				{/* heading */}
 				<AuthContext context="Hello! Register to get started" />
 				{/* Forms */}
-				<RegisterForm />
+				<RegisterForm handlePress={() => nav.navigate(routes.home)} />
 				{/* register */}
 				<AuthFooter
 					handlePress={() => nav.navigate(routes.auth_login)}

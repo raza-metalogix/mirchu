@@ -11,7 +11,16 @@ import Btns from "../../../components/Btns";
 import Form from "../../../components/Forms";
 import colors from "../../../utilities/color";
 import fonts from "../../../utilities/fonts";
-const RegisterForm = () => {
+import * as Yup from "yup"
+
+const registerYup = Yup.object().shape({
+	firstName: Yup.string().min(2, "Name is too short").required('Name is required'),
+	lastName: Yup.string().min(2, "Name is too short"),
+	email: Yup.string().email().required('Email is required'),
+	password: Yup.string().required("Password is required")
+})
+
+const RegisterForm = ({ handlePress }) => {
 	const [show, setShow] = useState(false);
 	return (
 		<Formik
@@ -21,10 +30,13 @@ const RegisterForm = () => {
 				email: "",
 				password: ""
 			}}
-			onSubmit={value => console.log(value)}
+			validationSchema={registerYup}
+			onSubmit={handlePress}
+
 		>
-			{({ values, handleChange, handleSubmit }) => (
+			{({ values, handleChange, handleSubmit, errors, touched }) => (
 				<View style={_styles.container}>
+
 					<View style={_styles.nameContainer}>
 						<View style={_styles.nameSubContainer}>
 							<Form
@@ -33,6 +45,8 @@ const RegisterForm = () => {
 								handleChange={handleChange('firstName')}
 								maxlength={15}
 								placehd="John"
+								passText={(errors.firstName && touched.firstName) && errors.firstName}
+								customMarigin={10}
 								svg={
 									<PersonSvg styles={_styles.inputSvg} />
 								}
@@ -40,10 +54,12 @@ const RegisterForm = () => {
 						</View>
 						<View style={[_styles.nameSubContainer, { marginLeft: 20 }]}>
 							<Form
-								context="Second Name"
+								context="Last Name"
 								value={values.lastName}
 								handleChange={handleChange('lastName')}
 								maxlength={15}
+								customMarigin={10}
+								passText={(errors.lastName && touched.lastName) && errors.lastName}
 								placehd="Smith"
 								svg={
 									<PersonSvg styles={_styles.inputSvg} />
@@ -51,12 +67,16 @@ const RegisterForm = () => {
 							/>
 						</View>
 					</View>
+
 					<Form
 						context="Email Address"
 						value={values.email}
 						handleChange={handleChange('email')}
 						placehd="johnsmith@gmail.com"
 						maxlength={30}
+						typeInput="email-address"
+						passText={(errors.email && touched.email) && errors.email}
+						customMarigin={10}
 						svg={
 							<EnvelopeEmail
 								styles={_styles.inputSvg} />
@@ -68,6 +88,8 @@ const RegisterForm = () => {
 						handleChange={handleChange('password')}
 						placehd="********"
 						maxlength={25}
+						passText={(errors.password && touched.password) && errors.password}
+						customMarigin={10}
 						secureText={!show}
 						svg={
 							<PasswordSvg
@@ -82,7 +104,7 @@ const RegisterForm = () => {
 						}
 					/>
 					{/* Login btn */}
-					<View style={{ marginTop: 10, width: "100%" }}>
+					<View style={{ marginTop: 0, width: "100%" }}>
 						<Btns
 							text="REGISTER"
 							color={colors.primary}
@@ -105,7 +127,7 @@ const _styles = StyleSheet.create({
 	},
 	inputContainer: {
 		width: "100%",
-		marginBottom: 20,
+		marginBottom: 0,
 		backgroundColor: colors.lightDark,
 		borderRadius: 7,
 		paddingHorizontal: 15,

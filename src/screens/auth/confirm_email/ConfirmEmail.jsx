@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { Formik } from "formik";
-import { View, StyleSheet, StatusBar, Dimensions } from "react-native"
+import { View, StyleSheet, StatusBar, Dimensions, Text } from "react-native"
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import EnvelopeEmail from "../../../assets/svgs/EnvelopeEmail";
 import AuthContext from "../../../components/AuthContext";
@@ -10,6 +10,13 @@ import Form from "../../../components/Forms";
 import routes from "../../../navigations/routes";
 import colors from "../../../utilities/color";
 import fonts from "../../../utilities/fonts";
+import * as Yup from "yup"
+import { useState } from "react";
+
+const confrimSchema = Yup.object().shape({
+	email: Yup.string().email('Invalid email.').required('Email is required to confirm your identity')
+})
+
 const ConfrimEmail = () => {
 	const nav = useNavigation()
 	return (
@@ -32,18 +39,26 @@ const ConfrimEmail = () => {
 }
 
 const ConfrimForm = ({ handlePress }) => {
+	const [error, setError] = useState("")
 	return (
 		<Formik
 			initialValues={{ email: "" }}
-			onSubmit={handlePress}
+			validationSchema={confrimSchema}
+			onSubmit={val => {
+				setError("Email is not register yet.")
+				handlePress()
+			}}
 		>
-			{({ values, handleChange, handleSubmit }) => (
+			{({ values, handleChange, handleSubmit, errors, touched }) => (
 				<View style={_styles.subContainer}>
+					<Text style={_styles.passText}>{error}</Text>
 					<Form
 						context="Email Address"
 						placehd="johnsmith@gmail.com"
 						maxlength={30}
+						typeInput="email-address"
 						value={values.email}
+						passText={(errors.email && touched.email) && errors.email}
 						handleChange={handleChange('email')}
 						svg={
 							<EnvelopeEmail styles={_styles.inputSvg} />
@@ -54,7 +69,7 @@ const ConfrimForm = ({ handlePress }) => {
 							text="SUBMIT"
 							color={colors.primary}
 							textColor="white"
-							handlePress={handlePress}
+							handlePress={handleSubmit}
 						/>
 					</View>
 
@@ -74,7 +89,7 @@ const _styles = StyleSheet.create({
 		width: Dimensions.get("screen").width,
 		alignItems: "center",
 		paddingHorizontal: 25,
-		marginTop: 30,
+		marginTop: 20,
 	},
 	formText: {
 		width: "100%",
@@ -105,5 +120,9 @@ const _styles = StyleSheet.create({
 		paddingHorizontal: 10,
 		color: colors.textSecondary,
 	},
+	passText: {
+		color: 'red',
+		marginBottom: 10,
+	}
 })
 export default ConfrimEmail

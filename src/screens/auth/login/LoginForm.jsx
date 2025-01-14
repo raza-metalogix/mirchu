@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import { useState } from "react";
-import { View, StyleSheet, Dimensions, TouchableOpacity } from "react-native"
+import { View, StyleSheet, Dimensions, TouchableOpacity, Text } from "react-native"
 import EnvelopeEmail from "../../../assets/svgs/EnvelopeEmail";
 import EyeClose from "../../../assets/svgs/EyeClose";
 import EyeOpen from "../../../assets/svgs/EyeOpen";
@@ -10,22 +10,40 @@ import Form from "../../../components/Forms";
 import colors from "../../../utilities/color";
 import fonts from "../../../utilities/fonts";
 import LoginHelp from "./LoginHelp";
+import * as Yup from "yup"
+
+const signupSchema = Yup.object().shape({
+	email: Yup.string()
+		.required('Email is required')
+		.email('Invalid email'),
+
+	password: Yup.string()
+		.required('Password is requried')
+
+})
+
 const LoginForm = ({ handlePress }) => {
 	const [show, setShow] = useState(false);
+	const [error, setError] = useState("")
 	return (
 		<Formik
 			initialValues={{ email: "", password: "" }}
-			onSubmit={value => console.log(value)}
+			validationSchema={signupSchema}
+			onSubmit={value => {
+				setError('Invalid email or password')
+				handlePress()
+			}}
 		>
-			{({ values, handleChange, handleSubmit }) => (
+			{({ values, handleChange, errors, touched, handleSubmit }) => (
 				<View style={_styles.container}>
-
+					<Text style={_styles.passText}>{error}</Text>
 					<Form
 						context={"Email Address"}
 						placehd="johnsmith@gmail.com"
 						value={values.email}
 						handleChange={handleChange('email')}
 						maxlength={30}
+						passText={(errors.email && touched.email) && errors.email}
 						svg={
 							<EnvelopeEmail styles={_styles.inputSvg} />
 						}
@@ -38,6 +56,7 @@ const LoginForm = ({ handlePress }) => {
 						handleChange={handleChange('password')}
 						maxlength={30}
 						secureText={!show}
+						passText={(errors.password && touched.password) && errors.password}
 						svg={
 							<PasswordSvg styles={_styles.inputPassSvg} />
 						}
@@ -49,7 +68,6 @@ const LoginForm = ({ handlePress }) => {
 							</TouchableOpacity>
 						}
 					/>
-
 					{/* reminder */}
 					<LoginHelp handlePress={handlePress} />
 					{/* Login btn */}
@@ -62,8 +80,9 @@ const LoginForm = ({ handlePress }) => {
 						/>
 					</View>
 				</View>
-			)}
-		</Formik>
+			)
+			}
+		</Formik >
 	);
 }
 
@@ -72,7 +91,7 @@ const _styles = StyleSheet.create({
 		width: Dimensions.get("screen").width,
 		alignItems: "center",
 		paddingHorizontal: 25,
-		marginTop: 30,
+		marginTop: 20,
 	},
 	inputContainer: {
 		width: "100%",
@@ -111,6 +130,10 @@ const _styles = StyleSheet.create({
 		width: 25,
 		height: 25,
 		opacity: 0.8,
+	},
+	passText: {
+		color: 'red',
+		marginBottom: 5
 	}
 
 })

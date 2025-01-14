@@ -13,7 +13,6 @@ const _styles = StyleSheet.create({
 	container: {
 		paddingHorizontal: 20,
 		alignItems: 'center',
-		marginBottom: 8,
 	},
 	text: {
 		fontSize: 20,

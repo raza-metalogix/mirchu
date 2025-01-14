@@ -9,17 +9,24 @@ const Form = ({
 	maxlength,
 	svg,
 	svgPass,
-	secureText
+	secureText,
+	passText,
+	typeInput,
+	customMarigin
 
 }) => {
 	return (
-		<View style={{ width: "100%" }}>
+		<View style={{
+			width: "100%",
+			marginBottom: customMarigin || 30
+		}}>
 			<Text style={_styles.formText}>{context}</Text>
 			<View style={[_styles.inputContainer, {
 				justifyContent: "flex-start"
 			}]}>
 				{svg}
 				<TextInput
+					keyboardType={typeInput}
 					value={value}
 					onChangeText={handleChange}
 					style={_styles.textInput}
@@ -30,6 +37,9 @@ const Form = ({
 				/>
 				{svgPass}
 			</View>
+			<Text style={_styles.pasText}>
+				{passText}
+			</Text>
 		</View>
 	);
 }
@@ -38,7 +48,7 @@ const _styles = StyleSheet.create({
 	inputContainer: {
 		width: "100%",
 		position: 'relative',
-		marginBottom: 33,
+		marginBottom: 10,
 		backgroundColor: colors.lightDark,
 		borderRadius: 7,
 		paddingHorizontal: 15,
@@ -67,6 +77,10 @@ const _styles = StyleSheet.create({
 		fontSize: 16,
 		marginBottom: 11
 	},
+	pasText: {
+		color: 'red',
+		width: "100%"
+	}
 })
 
 export default Form
