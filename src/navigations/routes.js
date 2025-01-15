@@ -10,5 +10,7 @@ const routes = {
 	// home Screen
 	home: "home",
 	home_listing: "home_listing",
+	home_categroy: "home_categroy",
+	home_search: "home_search",
 }
 export default routes
