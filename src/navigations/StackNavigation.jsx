@@ -15,7 +15,7 @@ const StackNavigation = () => {
 	return (
 		<Stack.Navigator
 			screenOptions={{ headerShown: false }}
-			initialRouteName={routes.home_purchase}
+		//initialRouteName={routes.home_purchase}
 		>
 			{/* Auth Screens */}
 			<Stack.Screen name={routes.nav_welcome} component={WelcomeScreen} />

@@ -1,8 +1,11 @@
 import { Svg, Path, G } from "react-native-svg"
 import colors from "../../utilities/color"
-const SearchSvg = ({ foc }) => (
+const SearchSvg = ({ foc, size, style }) => (
 	<Svg
-		fill={colors.primary} height="20px" width="20px"
+		fill={colors.primary}
+		height={size || "20px"}
+		width={size || "20px"}
+		style={style}
 		version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
 		viewBox="-14.65 -14.65 517.70 517.70" xmlSpace="preserve"
 		stroke={foc ? colors.primary : "#000000"} strokeWidth="24.9084">

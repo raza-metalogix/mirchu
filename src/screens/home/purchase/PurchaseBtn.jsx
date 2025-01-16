@@ -1,26 +1,62 @@
-import { View, StyleSheet } from "react-native"
-import Btn from "../../../components/Btns"
+import { View, StyleSheet, Image, TouchableOpacity, Text } from "react-native"
 import colors from "../../../utilities/color"
+import fonts from "../../../utilities/fonts"
+import { logo } from "../../../utilities/images"
 const PurchaseBtn = () => {
 	return (
 		<View style={_styles.container}>
-			<Btn
-				text="Buy now"
-				color={colors.secondary}
-				textColor="white"
+			<Image
+				source={logo}
+				style={{
+					width: "20%",
+					resizeMode: "contain"
+				}}
 			/>
+			<TouchableOpacity
+				activeOpacity={0.7}
+				style={_styles.btn}
+			>
+				<Text style={{
+					color: "white",
+					fontFamily: fonts.poppins_semiBold,
+
+				}}>Buy Now</Text>
+			</TouchableOpacity>
+
+			<TouchableOpacity
+				activeOpacity={0.7}
+				style={[_styles.btn, { backgroundColor: colors.primary }]}
+			>
+				<Text style={{
+					color: "white",
+					fontFamily: fonts.poppins_semiBold,
+
+				}}>Add To Cart</Text>
+			</TouchableOpacity>
+
 		</View>
 	);
 }
 
 const _styles = StyleSheet.create({
 	container: {
-		width: "100%",
-		marginTop: 50,
+		marginTop: 10,
+		flexDirection: 'row',
+		alignItems: "center",
+		justifyContent: "space-between",
+		paddingHorizontal: 20,
+		paddingVertical: 5,
+		borderWidth: 1,
+		borderColor: "#e6e6e6"
 	},
 	btn: {
-		width: "100%",
-		backgroundColor: colors.secondary
+		width: 130,
+		height: 50,
+		alignItems: "center",
+		justifyContent: "center",
+		backgroundColor: colors.secondary,
+		borderRadius: 10,
+
 	}
 })
 

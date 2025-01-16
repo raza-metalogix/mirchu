@@ -1,11 +1,15 @@
 import { TouchableOpacity, Text, StyleSheet } from "react-native"
 import fonts from "../utilities/fonts";
-const Btns = ({ text, handlePress, color, textColor }) => {
+const Btns = ({ text, width, handlePress, color, textColor }) => {
 	return (
 		<TouchableOpacity
 			activeOpacity={0.5}
 			onPress={handlePress}
-			style={[_styles.container, { backgroundColor: color || "white" }]}
+			style={[_styles.container,
+			{
+				backgroundColor: color || "white",
+				width: width || "100%",
+			}]}
 		>
 			<Text
 				style={[_styles.text,
@@ -19,7 +23,6 @@ const Btns = ({ text, handlePress, color, textColor }) => {
 const _styles = StyleSheet.create({
 	container: {
 		paddingVertical: 16,
-		width: "100%",
 		alignItems: "center",
 		justifyContent: 'center',
 		borderRadius: 10,
