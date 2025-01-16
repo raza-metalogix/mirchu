@@ -51,13 +51,13 @@ const _styles = StyleSheet.create({
 		textAlign: "center",
 		color: colors.textPrimary,
 		fontSize: 50,
-		fontFamily: fonts.roboto.black,
+		fontFamily: fonts.poppins_bold,
 		letterSpacing: 1.2
 	},
 	subHeading: {
 		textAlign: "center",
 		color: colors.textPrimary,
-		fontFamily: fonts.montserrat.medium,
+		fontFamily: fonts.poppins_medium,
 		fontSize: 16
 	},
 	listContainer: {

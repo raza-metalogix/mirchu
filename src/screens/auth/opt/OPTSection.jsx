@@ -39,12 +39,8 @@ const _styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		paddingHorizontal: 30,
 		marginTop: 30,
-		marginBottom: 40,
+		marginBottom: 30,
 	},
-	textInput: {
-		position: "absolute",
-		opacity: 0,
-	}
 })
 
 export default OPTSection

@@ -16,7 +16,7 @@ const TabNavigation = () => {
 			screenOptions={{ headerShown: false }}
 		>
 			<Tab.Screen
-				name={routes.home_listing}
+				name={routes.tab_listing}
 				component={ListingScreen}
 				options={{
 					tabBarLabel: (el) => <TabLabel txt="Home" foc={el.focused} />,
@@ -26,7 +26,7 @@ const TabNavigation = () => {
 				}}
 			/>
 			<Tab.Screen
-				name={routes.home_categroy}
+				name={routes.tab_categroy}
 				component={SearhcScreen}
 				options={{
 					tabBarLabel: (el) => <TabLabel txt="Categroy" foc={el.focused} />,
@@ -35,7 +35,7 @@ const TabNavigation = () => {
 				}}
 			/>
 			<Tab.Screen
-				name={routes.home_search}
+				name={routes.tab_search}
 				component={SearhcScreen}
 				options={{
 					tabBarLabel: (el) => <TabLabel txt="Search" foc={el.focused} />,

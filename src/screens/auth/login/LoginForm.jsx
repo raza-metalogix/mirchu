@@ -42,6 +42,7 @@ const LoginForm = ({ handlePress }) => {
 						placehd="johnsmith@gmail.com"
 						value={values.email}
 						handleChange={handleChange('email')}
+						customMargin={10}
 						maxlength={30}
 						passText={(errors.email && touched.email) && errors.email}
 						svg={
@@ -71,7 +72,7 @@ const LoginForm = ({ handlePress }) => {
 					{/* reminder */}
 					<LoginHelp handlePress={handlePress} />
 					{/* Login btn */}
-					<View style={{ marginTop: 50, width: "100%" }}>
+					<View style={{ marginTop: 40, width: "100%" }}>
 						<Btns
 							text="LOGIN"
 							color={colors.primary}
@@ -93,34 +94,6 @@ const _styles = StyleSheet.create({
 		paddingHorizontal: 25,
 		marginTop: 20,
 	},
-	inputContainer: {
-		width: "100%",
-		marginBottom: 20,
-		backgroundColor: colors.lightDark,
-		borderRadius: 7,
-		paddingHorizontal: 15,
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-between'
-	},
-	inputPassContainer: {
-		flexDirection: 'row',
-		alignItems: 'center',
-	},
-	textInput: {
-		height: 60,
-		fontFamily: fonts.roboto.regular,
-		fontSize: 16,
-		paddingHorizontal: 10,
-		color: colors.textSecondary,
-	},
-	formText: {
-		width: "100%",
-		fontWeight: "500",
-		color: colors.textSecondary,
-		fontSize: 20,
-		marginBottom: 11
-	},
 	inputSvg: {
 		width: 25,
 		height: 25,
@@ -131,11 +104,6 @@ const _styles = StyleSheet.create({
 		height: 25,
 		opacity: 0.8,
 	},
-	passText: {
-		color: 'red',
-		marginBottom: 5
-	}
-
 })
 
 export default LoginForm

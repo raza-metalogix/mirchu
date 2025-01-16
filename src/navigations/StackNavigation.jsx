@@ -5,8 +5,9 @@ import LoginScreen from "../screens/auth/login/LoginScreen";
 import OPTScreen from "../screens/auth/opt/OPTScreen";
 import RegisterScreen from "../screens/auth/register/RegisterScreen";
 import WelcomeScreen from "../screens/welcome/WelcomeScreen";
+import DrawerNavigation from "./DrawerNavigation"
+import PurchaseScreen from "../screens/home/purchase/PurchaseScreen";
 import routes from "./routes";
-import TabNavigation from "./TabNavigation";
 
 const Stack = createStackNavigator()
 
@@ -14,7 +15,7 @@ const StackNavigation = () => {
 	return (
 		<Stack.Navigator
 			screenOptions={{ headerShown: false }}
-			initialRouteName={routes.home}
+			initialRouteName={routes.home_purchase}
 		>
 			{/* Auth Screens */}
 			<Stack.Screen name={routes.nav_welcome} component={WelcomeScreen} />
@@ -23,9 +24,9 @@ const StackNavigation = () => {
 			<Stack.Screen name={routes.auth_confirm} component={ConfrimEmail} />
 			<Stack.Screen name={routes.auth_opt_pass} component={OPTScreen} />
 			<Stack.Screen name={routes.auth_change_pas} component={ChangePassword} />
-			<Stack.Screen name={routes.home} component={TabNavigation} />
-
+			<Stack.Screen name={routes.home_purchase} component={PurchaseScreen} />
 			{/* home Screen */}
+			<Stack.Screen name={routes.drawer} component={DrawerNavigation} />
 		</Stack.Navigator>
 	);
 }

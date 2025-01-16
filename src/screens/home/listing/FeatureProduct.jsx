@@ -2,9 +2,8 @@ import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, Platform } f
 import colors from "../../../utilities/color";
 import fonts from "../../../utilities/fonts";
 import { productImg } from "../../../utilities/images";
-const ListingProduct = ({ heading }) => {
+const ListingProduct = ({ heading, handlePress }) => {
 	const context = [...Array(10)]
-	const handlePress = () => console.log()
 	return (
 		<View style={_style.container}>
 			<Text style={_style.heading}>{heading}</Text>
@@ -17,7 +16,8 @@ const ListingProduct = ({ heading }) => {
 				keyExtractor={(_, index) => index.toString()}
 				renderItem={({ _, index }) =>
 					<View style={_style.box}>
-						<TouchableOpacity onPress={handlePress} key={index}>
+						<TouchableOpacity
+							onPress={handlePress} key={index}>
 							<View style={_style.productContainer}>
 
 								{/* img */}
@@ -122,7 +122,7 @@ const _style = StyleSheet.create({
 	},
 	heading: {
 		fontSize: 18,
-		fontFamily: fonts.roboto.bold,
+		fontFamily: fonts.poppins_bold,
 		color: colors.textSecondary,
 		marginBottom: 20,
 	},

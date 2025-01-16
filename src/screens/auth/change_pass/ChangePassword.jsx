@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { Formik } from "formik";
 import { useState } from "react";
-import { Dimensions, StatusBar, StyleSheet, TouchableOpacity, View, Text } from "react-native";
+import { Dimensions, StatusBar, StyleSheet, TouchableOpacity, View, Platform } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import EyeClose from "../../../assets/svgs/EyeClose";
 import EyeOpen from "../../../assets/svgs/EyeOpen";
@@ -11,7 +11,6 @@ import AuthLogo from "../../../components/AuthLogo";
 import Btns from "../../../components/Btns";
 import Form from "../../../components/Forms";
 import colors from "../../../utilities/color";
-import fonts from "../../../utilities/fonts";
 
 import * as Yup from "yup"
 import routes from "../../../navigations/routes";
@@ -24,6 +23,7 @@ const changePassSchema = Yup.object().shape({
 })
 
 const ChangePassword = () => {
+	const nav = useNavigation()
 	return (
 		<SafeAreaProvider>
 			<StatusBar backgroundColor="white" barStyle="dark-content" />
@@ -33,21 +33,20 @@ const ChangePassword = () => {
 				{/* heading */}
 				<AuthContext context="Change Password" />
 				{/* Forms */}
-				<ChangePassForm />
+				<ChangePassForm nav={nav} />
 				{/* Footer */}
 			</View>
 		</SafeAreaProvider>
 
 	);
 }
-const ChangePassForm = () => {
+const ChangePassForm = ({ nav }) => {
 	const [show, setShow] = useState(false);
-	const nav = useNavigation()
 	return (
 		<Formik
 			initialValues={{ pass: "", confirmPass: "" }}
 			validationSchema={changePassSchema}
-			onSubmit={val => nav.navigate(routes.home)}
+			onSubmit={val => nav.navigate(routes.drawer)}
 		>
 			{({ values, handleChange, handleSubmit, errors, touched }) => (
 				<View style={_styles.subContainer}>
@@ -57,6 +56,7 @@ const ChangePassForm = () => {
 						value={values.pass}
 						handleChange={handleChange('pass')}
 						maxlength={30}
+						customMargin={Platform.OS == "ios" ? 10 : 5}
 						secureText={!show}
 						passText={(errors.pass && touched.pass) && errors.pass}
 						svg={
@@ -77,13 +77,14 @@ const ChangePassForm = () => {
 						handleChange={handleChange('confirmPass')}
 						maxlength={30}
 						secureText={!show}
+						customMargin={Platform.OS == "ios" && 10}
 						passText={(errors.confirmPass && touched.confirmPass) && errors.confirmPass}
 						svg={
 							<PasswordSvg styles={_styles.inputPassSvg} />
 						}
 					/>
 
-					<View style={{ marginTop: 0, width: "100%" }}>
+					<View style={{ marginTop: 20, width: "100%" }}>
 						<Btns
 							text="Submit"
 							color={colors.primary}
@@ -108,40 +109,12 @@ const _styles = StyleSheet.create({
 		width: Dimensions.get("screen").width,
 		alignItems: "center",
 		paddingHorizontal: 25,
-		marginTop: 20,
-	},
-	formText: {
-		width: "100%",
-		fontWeight: "500",
-		color: colors.textSecondary,
-		fontSize: 20,
-		marginBottom: 11
+		marginTop: 30,
 	},
 	inputSvg: {
 		width: 25,
 		height: 25,
 		opacity: 0.8,
-	},
-	inputContainer: {
-		width: "100%",
-		marginBottom: 20,
-		backgroundColor: colors.lightDark,
-		borderRadius: 7,
-		paddingHorizontal: 15,
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-between'
-	},
-	inputPassContainer: {
-		flexDirection: 'row',
-		alignItems: 'center',
-	},
-	textInput: {
-		height: 60,
-		fontFamily: fonts.roboto.regular,
-		fontSize: 16,
-		paddingHorizontal: 10,
-		color: colors.textSecondary,
 	},
 	inputPassSvg: {
 		width: 25,

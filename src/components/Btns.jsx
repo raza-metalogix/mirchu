@@ -8,7 +8,9 @@ const Btns = ({ text, handlePress, color, textColor }) => {
 			style={[_styles.container, { backgroundColor: color || "white" }]}
 		>
 			<Text
-				style={[_styles.text, { color: textColor || "black" }]}>
+				style={[_styles.text,
+				{ color: textColor || "black" }
+				]}>
 				{text}
 			</Text>
 		</TouchableOpacity>
@@ -23,7 +25,7 @@ const _styles = StyleSheet.create({
 		borderRadius: 10,
 	},
 	text: {
-		fontFamily: fonts.roboto.medium,
+		fontFamily: fonts.poppins_medium,
 		fontSize: 20,
 		letterSpacing: 1.2,
 	}

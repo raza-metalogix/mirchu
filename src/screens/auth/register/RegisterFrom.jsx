@@ -1,7 +1,7 @@
 
 import { Formik } from "formik";
 import { useState } from "react";
-import { View, StyleSheet, Dimensions, TouchableOpacity } from "react-native"
+import { View, StyleSheet, Dimensions, TouchableOpacity, Platform } from "react-native"
 import EnvelopeEmail from "../../../assets/svgs/EnvelopeEmail";
 import EyeClose from "../../../assets/svgs/EyeClose";
 import EyeOpen from "../../../assets/svgs/EyeOpen";
@@ -44,9 +44,9 @@ const RegisterForm = ({ handlePress }) => {
 								value={values.firstName}
 								handleChange={handleChange('firstName')}
 								maxlength={15}
+								customMargin={Platform.OS == "ios" && 10}
 								placehd="John"
 								passText={(errors.firstName && touched.firstName) && errors.firstName}
-								customMarigin={10}
 								svg={
 									<PersonSvg styles={_styles.inputSvg} />
 								}
@@ -58,7 +58,7 @@ const RegisterForm = ({ handlePress }) => {
 								value={values.lastName}
 								handleChange={handleChange('lastName')}
 								maxlength={15}
-								customMarigin={10}
+								customMargin={Platform.OS == "ios" && 10}
 								passText={(errors.lastName && touched.lastName) && errors.lastName}
 								placehd="Smith"
 								svg={
@@ -76,7 +76,7 @@ const RegisterForm = ({ handlePress }) => {
 						maxlength={30}
 						typeInput="email-address"
 						passText={(errors.email && touched.email) && errors.email}
-						customMarigin={10}
+						customMargin={Platform.OS == "ios" && 10}
 						svg={
 							<EnvelopeEmail
 								styles={_styles.inputSvg} />
@@ -89,7 +89,7 @@ const RegisterForm = ({ handlePress }) => {
 						placehd="********"
 						maxlength={25}
 						passText={(errors.password && touched.password) && errors.password}
-						customMarigin={10}
+						customMargin={Platform.OS == "ios" && 10}
 						secureText={!show}
 						svg={
 							<PasswordSvg
@@ -104,7 +104,7 @@ const RegisterForm = ({ handlePress }) => {
 						}
 					/>
 					{/* Login btn */}
-					<View style={{ marginTop: 0, width: "100%" }}>
+					<View style={{ marginTop: 15, width: "100%" }}>
 						<Btns
 							text="REGISTER"
 							color={colors.primary}
@@ -124,34 +124,6 @@ const _styles = StyleSheet.create({
 		alignItems: "center",
 		paddingHorizontal: 25,
 		marginTop: 30,
-	},
-	inputContainer: {
-		width: "100%",
-		marginBottom: 0,
-		backgroundColor: colors.lightDark,
-		borderRadius: 7,
-		paddingHorizontal: 15,
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-between'
-	},
-	inputPassContainer: {
-		flexDirection: 'row',
-		alignItems: 'center',
-	},
-	textInput: {
-		height: 60,
-		fontFamily: fonts.roboto.regular,
-		fontSize: 16,
-		paddingHorizontal: 10,
-		color: colors.textSecondary,
-	},
-	formText: {
-		width: "100%",
-		fontWeight: "500",
-		color: colors.textSecondary,
-		fontSize: 16,
-		marginBottom: 11
 	},
 	inputSvg: {
 		width: 25,

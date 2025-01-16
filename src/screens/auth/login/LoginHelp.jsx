@@ -22,29 +22,9 @@ const _styles = StyleSheet.create({
 	},
 	text: {
 		color: colors.primary,
+		fontFamily: fonts.poppins_medium,
 		opacity: 0.7
 	},
-	remContainer: {
-		flexDirection: "row",
-		alignItems: 'center',
-	},
-	rememBox: {
-		width: 23,
-		height: 23,
-		borderRadius: 4,
-		marginRight: 7,
-		alignItems: "center",
-		justifyContent: 'center'
-	},
-	rememText: {
-		color: colors.textSecondary,
-		fontFamily: fonts.roboto.regular,
-		opacity: 1
-	},
-	svg: {
-		width: 20,
-		height: 20,
-	}
 })
 
 export default LoginHelp

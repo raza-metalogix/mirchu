@@ -5,7 +5,10 @@ import { web_banner } from '../../../utilities/images';
 import ListingProduct from './FeatureProduct';
 import ListCategroy from './ListCategory';
 import ListerSwiper from './ListerSwiper';
+import { useNavigation } from "@react-navigation/native";
 const ListingScreen = () => {
+	const nav = useNavigation();
+	const handlePress = () => nav.navigate("home_purchase");
 	return (
 		<SafeAreaProvider style={_styles.container}>
 			<StatusBar
@@ -21,7 +24,9 @@ const ListingScreen = () => {
 					<HeaderCompo />
 					<ListerSwiper />
 					<ListCategroy />
-					<ListingProduct heading="Feature Product" />
+					<ListingProduct
+						handlePress={handlePress}
+						heading="Feature Product" />
 					<Image
 						style={_styles.imgBanner}
 						source={web_banner}

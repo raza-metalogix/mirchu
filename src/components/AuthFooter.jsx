@@ -16,7 +16,7 @@ const AuthFooter = ({ handlePress, context, nav }) => {
 				<Text style={{ color: colors.textSecondary }}>By continuing, you agree to the</Text>
 				<View style={_styles.subPolicy}>
 					<TouchableOpacity>
-						<Text style={_styles.tfS}>Term of Serverice</Text>
+						<Text style={_styles.tfS}>Term of Service</Text>
 					</TouchableOpacity>
 					<Text style={_styles.and}>&</Text>
 					<TouchableOpacity>
@@ -72,7 +72,7 @@ const _styles = StyleSheet.create({
 	},
 	tfS: {
 		color: colors.primary,
-		fontFamily: fonts.roboto.bold,
+		fontFamily: fonts.poppins_bold,
 	},
 	and: {
 		marginHorizontal: 4,

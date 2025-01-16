@@ -15,9 +15,10 @@ const _styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	text: {
-		fontSize: 20,
-		fontFamily: fonts.roboto.medium,
-		color: colors.textSecondary
+		fontSize: 22,
+		fontFamily: fonts.poppins_semiBold,
+		color: colors.darkBlue,
+		textAlign: "center"
 	}
 })
 

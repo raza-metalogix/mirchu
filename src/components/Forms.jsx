@@ -12,13 +12,13 @@ const Form = ({
 	secureText,
 	passText,
 	typeInput,
-	customMarigin
+	customMargin
 
 }) => {
 	return (
 		<View style={{
 			width: "100%",
-			marginBottom: customMarigin || 30
+			marginBottom: customMargin || 0
 		}}>
 			<Text style={_styles.formText}>{context}</Text>
 			<View style={[_styles.inputContainer, {
@@ -48,7 +48,7 @@ const _styles = StyleSheet.create({
 	inputContainer: {
 		width: "100%",
 		position: 'relative',
-		marginBottom: 10,
+		marginBottom: 0,
 		backgroundColor: colors.lightDark,
 		borderRadius: 7,
 		paddingHorizontal: 15,
@@ -65,7 +65,7 @@ const _styles = StyleSheet.create({
 	textInput: {
 		width: "85%",
 		height: 60,
-		fontFamily: fonts.roboto.regular,
+		fontFamily: fonts.poppins_regular,
 		fontSize: 16,
 		paddingHorizontal: 10,
 		color: colors.textSecondary,

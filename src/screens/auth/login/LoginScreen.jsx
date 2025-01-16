@@ -22,7 +22,7 @@ const LoginScreen = () => {
 				<AuthFooter
 					handlePress={() => nav.navigate(routes.auth_register)}
 					context="Need an Account?"
-					nav="register"
+					nav="sign up"
 				/>
 			</View>
 		</SafeAreaProvider>

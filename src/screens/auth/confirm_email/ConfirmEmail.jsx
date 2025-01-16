@@ -56,6 +56,7 @@ const ConfrimForm = ({ handlePress }) => {
 						context="Email Address"
 						placehd="johnsmith@gmail.com"
 						maxlength={30}
+						customMargin={30}
 						typeInput="email-address"
 						value={values.email}
 						passText={(errors.email && touched.email) && errors.email}
@@ -91,34 +92,10 @@ const _styles = StyleSheet.create({
 		paddingHorizontal: 25,
 		marginTop: 20,
 	},
-	formText: {
-		width: "100%",
-		fontWeight: "500",
-		color: colors.textSecondary,
-		fontSize: 20,
-		marginBottom: 11
-	},
 	inputSvg: {
 		width: 25,
 		height: 25,
 		opacity: 0.8,
-	},
-	inputContainer: {
-		width: "100%",
-		marginBottom: 20,
-		backgroundColor: colors.lightDark,
-		borderRadius: 7,
-		paddingHorizontal: 15,
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-between'
-	},
-	textInput: {
-		height: 60,
-		fontFamily: fonts.roboto.regular,
-		fontSize: 16,
-		paddingHorizontal: 10,
-		color: colors.textSecondary,
 	},
 	passText: {
 		color: 'red',
