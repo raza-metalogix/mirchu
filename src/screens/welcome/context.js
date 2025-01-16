@@ -11,7 +11,7 @@ const context = [
 	},
 	{
 		text: "Skip",
-		route: routes.drawer,
+		route: routes.tab,
 	},
 ]
 export default context;

@@ -31,7 +31,10 @@ const TabNavigation = () => {
 				options={{
 					tabBarLabel: (el) => <TabLabel txt="Categroy" foc={el.focused} />,
 					tabBarIcon: (el) =>
-						<CategorySvg color={el.focused && colors.primary} />,
+						<CategorySvg
+							color={el.focused && colors.primary}
+							foc={el.focused}
+						/>,
 				}}
 			/>
 			<Tab.Screen

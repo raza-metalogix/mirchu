@@ -1,8 +1,11 @@
-import { View, FlatList, Image, StyleSheet, Dimensions, TouchableOpacity } from "react-native"
+import { View, FlatList, Image, StyleSheet, Dimensions, TouchableOpacity, Text } from "react-native"
 import { listCategoryImgs } from "../../../utilities/images";
+import colors from "../../../utilities/color";
+import fonts from "../../../utilities/fonts";
 const ListCategroy = () => {
 	return (
 		<View style={_styles.container}>
+			<Text style={_styles.heading}>Best Categories</Text>
 			<FlatList
 				scrollEnabled={false}
 				data={listCategoryImgs}
@@ -35,7 +38,13 @@ const _styles = StyleSheet.create({
 		width: Dimensions.get("screen").width / 4.5,
 		height: 80,
 		resizeMode: 'cover'
-	}
+	},
+	heading: {
+		fontSize: 18,
+		fontFamily: fonts.poppins_bold,
+		color: colors.textSecondary,
+		marginBottom: 20,
+	},
 })
 
 export default ListCategroy

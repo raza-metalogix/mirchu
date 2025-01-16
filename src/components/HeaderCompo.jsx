@@ -1,20 +1,8 @@
 import { View, Image, StyleSheet } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import HamburgerSvg from "../assets/svgs/HamburgerSvg";
 import { logo } from "../utilities/images";
-import { useNavigation } from "@react-navigation/native";
 const HeaderCompo = () => {
-	const nav = useNavigation();
-	//navigation.openDrawer();
 	return (
 		<View style={_style.container}>
-			<View style={_style.svgContainer}>
-				<TouchableOpacity
-					onPress={() => nav.openDrawer()}
-				>
-					<HamburgerSvg styles={_style.svg} />
-				</TouchableOpacity>
-			</View>
 			<Image source={logo} style={_style.image} />
 		</View >
 	);

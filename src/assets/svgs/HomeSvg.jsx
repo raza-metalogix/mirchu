@@ -4,7 +4,8 @@ const HomeSvg = ({ foc }) => (
 	<Svg
 		style={{
 			width: 20,
-			height: 20
+			height: 20,
+			opacity: foc ? 1 : 0.7
 		}}
 		viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" >
 		<G id="SVGRepo_bgCarrier" strokeWidth="0"></G>

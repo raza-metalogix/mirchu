@@ -1,8 +1,12 @@
 import { Path, Svg, G } from 'react-native-svg'
-const CategorySvg = ({ color }) => (
+const CategorySvg = ({ color, foc }) => (
 	<Svg
 		viewBox="0 0 24 24"
-		style={{ width: 20, height: 20 }}
+		style={{
+			width: 20,
+			height: 20,
+			opacity: foc ? 1 : 0.7
+		}}
 		fill="none" xmlns="http://www.w3.org/2000/svg">
 		<G id="SVGRepo_bgCarrier" strokeWidth="0"></G>
 		<G id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></G>

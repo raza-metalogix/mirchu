@@ -7,7 +7,7 @@ const AuthLogo = ({ handlePress }) => {
 		<View style={_styles.container}>
 			<TouchableOpacity
 				onPress={handlePress}
-				style={{ width: 25 }}
+				style={{ width: 20 }}
 			>
 				<ChavronSvg styles={_styles.svg} />
 			</TouchableOpacity>
@@ -40,8 +40,9 @@ const _styles = StyleSheet.create({
 		resizeMode: "contain",
 	},
 	svg: {
-		width: 25,
-		height: 25
+		width: 20,
+		height: 20,
+		opacity: 0.8
 	}
 })
 

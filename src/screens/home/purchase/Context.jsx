@@ -9,7 +9,6 @@ const Context = () => {
 				<Text style={_styles.price}>Rs 59</Text>
 				<View style={_styles.price_sub_cont}>
 					<Text style={_styles.cutPrice}>Rs 70</Text>
-
 					<View
 						style={{
 							backgroundColor: "#fde7e8",
@@ -20,7 +19,6 @@ const Context = () => {
 						}}>
 						<Text style={_styles.off}>16% off</Text>
 					</View>
-
 				</View>
 			</View>
 
