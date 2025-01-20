@@ -17,6 +17,3 @@ export const HeartSvg = ({ color, style }) => (
 	</Svg>
 );
 
-export const HeaderFillSvg = ({ color, style }) => (
-	null
-);

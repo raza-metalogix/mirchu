@@ -1,31 +1,60 @@
-import { Dimensions, Image, StyleSheet, View } from "react-native";
-import { SwiperFlatList } from "react-native-swiper-flatlist"
-import { swipeImg } from "../../../utilities/images";
+import { Dimensions, Image, StyleSheet, View, Platform } from "react-native";
+import { swipeImg } from "../../../utilities/images"
+import { SwiperFlatList } from 'react-native-swiper-flatlist';
 const ListerSwiper = () => {
-	return (
-		<SwiperFlatList
-			autoplay
-			autoplayDelay={2}
-			autoplayLoop
-			data={swipeImg}
-			index={0}
-			removeClippedSubviews={false}
-			renderItem={({ item }) => (
-				<Image
-					style={_styles.imgContainer}
-					source={item}
-				/>
-			)}
-		/>
-	);
+    return (
+	<View style={_styles.container}>
+	<SwiperFlatList
+	style={_styles.imgSwiper}
+	data={swipeImg}
+	showsHorizontalScrollIndicator={false}
+	horizontal={true}
+	autoplay={true}
+	autoplayLoop={true}
+	keyExtraction={(_, index) => index.toString()}
+	renderItem={({ item }) =>
+	    <View
+	    style={{
+		width: Dimensions.get("screen").width,
+		    height: 160,
+		    alignItems: 'center'
+	    }}
+	    >
+	    <View
+	    style={_styles.imgMajor}
+	    >
+	    <Image
+	    style={_styles.imgContainer}
+	    source={item}
+	    />
+	    </View>
+	    </View>
+	}
+	/>
+	</View>
+    )
 }
 
 const _styles = StyleSheet.create({
-	imgContainer: {
-		width: Dimensions.get("screen").width,
-		height: 160,
-		resizeMode: 'contain'
-	}
+    container: {
+	alignItems: "center",
+	marginTop: 40,
+    },
+    imgSwiper: {
+    },
+    imgMajor: {
+	borderRadius: 15,
+	height: Platform.OS == 'ios' ? 130 : 160,
+	overflow: "hidden",
+	justifyContent: "center",
+	alignItems: "center"
+    },
+    imgContainer: {
+	width: Dimensions.get("screen").width * 0.92,
+	height: 160,
+	resizeMode: 'contain',
+	borderRadius: 10,
+    }
 })
 
 export default ListerSwiper

@@ -13,7 +13,8 @@ const routes = {
 	tab: "tab",
 	tab_listing: "home_listing",
 	tab_categroy: "home_categroy",
-	tab_search: "home_search",
+	tab_cart: "home_cart",
+	tab_account: "profile",
 
 	home_purchase: "home_purchase",
 

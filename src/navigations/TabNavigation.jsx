@@ -1,7 +1,8 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import CategorySvg from "../assets/svgs/CategorySvg";
 import HomeSvg from "../assets/svgs/HomeSvg";
-import SearchSvg from "../assets/svgs/SearchSvg";
+import PersonSvg from "../assets/svgs/PersonSvg";
+import CartSvg from "../assets/svgs/CartSvg";
 import TabLabel from "../components/TabLabel";
 import ListingScreen from "../screens/home/listing/ListingScreen";
 import SearhcScreen from "../screens/home/search/SearchScreen";
@@ -27,7 +28,7 @@ const TabNavigation = () => {
 			/>
 			<Tab.Screen
 				name={routes.tab_categroy}
-				component={SearhcScreen}
+				component={ListingScreen}
 				options={{
 					tabBarLabel: (el) => <TabLabel txt="Categroy" foc={el.focused} />,
 					tabBarIcon: (el) =>
@@ -38,12 +39,27 @@ const TabNavigation = () => {
 				}}
 			/>
 			<Tab.Screen
-				name={routes.tab_search}
-				component={SearhcScreen}
+				name={routes.tab_cart}
+				component={ListingScreen}
 				options={{
-					tabBarLabel: (el) => <TabLabel txt="Search" foc={el.focused} />,
+					tabBarLabel: (el) => <TabLabel txt="Cart" foc={el.focused} />,
 					tabBarIcon: (el) =>
-						<SearchSvg foc={el.focused} />,
+						<CartSvg
+							color={el.focused && colors.primary}
+							style={{ width: 20, height: 20 }}
+						/>,
+				}}
+			/>
+			<Tab.Screen
+				name={routes.tab_account}
+				component={ListingScreen}
+				options={{
+					tabBarLabel: (el) => <TabLabel txt="Profile" foc={el.focused} />,
+					tabBarIcon: (el) =>
+						<PersonSvg
+							color={el.focused && colors.primary}
+							style={{ width: 20, height: 20 }}
+						/>,
 				}}
 			/>
 		</Tab.Navigator>

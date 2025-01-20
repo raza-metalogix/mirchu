@@ -2,7 +2,7 @@ import { View, StyleSheet, Image, TouchableOpacity, Text } from "react-native"
 import colors from "../../../utilities/color"
 import fonts from "../../../utilities/fonts"
 import { logo } from "../../../utilities/images"
-const PurchaseBtn = () => {
+const PurchaseBtn = ({ handlePress }) => {
 	return (
 		<View style={_styles.container}>
 			<Image
@@ -24,6 +24,7 @@ const PurchaseBtn = () => {
 			</TouchableOpacity>
 
 			<TouchableOpacity
+				onPress={handlePress}
 				activeOpacity={0.7}
 				style={[_styles.btn, { backgroundColor: colors.primary }]}
 			>

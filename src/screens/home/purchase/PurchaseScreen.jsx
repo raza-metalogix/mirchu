@@ -8,38 +8,43 @@ import PurchaseBtn from "./PurchaseBtn"
 import PolicySection from "./PolicySection"
 import Description from "./Description"
 import TopHeader from "./TopHeader"
-
+import { useState } from "react"
+import BottomMenu from "./BottomMenu"
 const PurchaseScreen = () => {
-	const nav = useNavigation()
-	return (
-		<SafeAreaProvider style={_styles.container}>
-			<TopHeader handlePress={() => nav.goBack()} />
-			<FlatList
-				data={[1]}
-				keyExtraction={item => item.toString()}
-				showsVerticalScrollIndicator={false}
-				renderItem={() =>
-					<>
-						<ImageSwiper />
-						<View style={{ paddingHorizontal: 20 }}>
-							<Context />
-							<Rating />
-							<PolicySection />
-							<Description />
-						</View>
-					</>
-				}
-			/>
-			<PurchaseBtn />
-		</SafeAreaProvider>
-	);
+    const nav = useNavigation()
+    const [show, setShow] = useState(!true)
+    return (
+	<SafeAreaProvider style={_styles.container}>
+	<TopHeader handlePress={() => nav.goBack()} />
+	<FlatList
+	data={[1]}
+	keyExtraction={item => item.toString()}
+	showsVerticalScrollIndicator={false}
+	renderItem={() =>
+	    <>
+	    <ImageSwiper />
+	    <View style={{ paddingHorizontal: 20 }}>
+	    <Context />
+	    <Rating />
+	    <PolicySection />
+	    <Description />
+	    </View>
+	    </>
+	}
+	/>
+	<PurchaseBtn handlePress={() => setShow(true)} />
+	<BottomMenu show={show} handlePress={() => setShow(false)} />
+	</SafeAreaProvider>
+    );
 }
 
+
+
 const _styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: "white",
-		paddingTop: Platform.OS == "ios" ? 40 : 0,
-	},
+    container: {
+	flex: 1,
+	backgroundColor: "white",
+	paddingTop: Platform.OS == "ios" ? 40 : 0,
+    },
 })
 export default PurchaseScreen

@@ -1,50 +1,73 @@
-import { View, FlatList, Image, StyleSheet, Dimensions, TouchableOpacity, Text } from "react-native"
+import { View, FlatList, Image, Platform, StyleSheet, Dimensions, TouchableOpacity, Text } from "react-native"
 import { listCategoryImgs } from "../../../utilities/images";
-import colors from "../../../utilities/color";
 import fonts from "../../../utilities/fonts";
+import colors from "../../../utilities/color";
 const ListCategroy = () => {
-	return (
-		<View style={_styles.container}>
-			<Text style={_styles.heading}>Best Categories</Text>
-			<FlatList
-				scrollEnabled={false}
-				data={listCategoryImgs}
-				horizontal
-				ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
-				keyExtractor={(_, index) => index.toString()}
-				renderItem={({ item }) =>
-					<TouchableOpacity
-						activeOpacity={0.5}
-					>
-						<Image
-							style={_styles.img}
-							source={item}
-						/>
-					</TouchableOpacity>
+    return (
+	<View style={_styles.container}>
+	<Text style={_styles.heading}>Best Categories</Text>
+	<FlatList
+	showsHorizontalScrollIndicator={false}
+	data={catagroies}
+	horizontal
+	keyExtractor={(_, index) => index.toString()}
+	renderItem={({ item }) =>
+	    <TouchableOpacity
+	    activeOpacity={0.5}
+	    style={{
+		flexDirection:"column",
+		backgroundColor: colors.lightYellow,
+		paddingVertical:10,
+		paddingHorizontal:20,
+		    borderRadius:10,
+		    marginRight:20,
+	    }}
+	    >
+	    <Image
+	    style={_styles.img}
+	    source={item.img}
+	    />
+	    <Text
+	    style={{
+		marginTop:15,
+		textAlign:"center",
+		color:"black",
+		fontFamily: fonts.poppins_medium,
+		fontSize:16,
+	    }}
+	    >{item.text}</Text>
+	    </TouchableOpacity>
 
-				}
-			/>
-		</View>
-	);
+	}
+	/>
+	</View>
+    );
 }
 
+const catagroies= [
+    {img: listCategoryImgs[0], text:"Milk"},
+    {img: listCategoryImgs[1], text:"Vegetable"},
+    {img: listCategoryImgs[2], text:"Meat"},
+    {img: listCategoryImgs[3], text:"Fruits"},
+
+]
 const _styles = StyleSheet.create({
-	container: {
-		marginVertical: 10,
-		justifyContent: "center",
-		paddingLeft: 8
-	},
-	img: {
-		width: Dimensions.get("screen").width / 4.5,
-		height: 80,
-		resizeMode: 'cover'
-	},
-	heading: {
-		fontSize: 18,
-		fontFamily: fonts.poppins_bold,
-		color: colors.textSecondary,
-		marginBottom: 20,
-	},
+    container: {
+	marginTop: Platform.OS == "ios" ? 10 : 40,
+	justifyContent: "center",
+	paddingLeft: 20
+    },
+    img: {
+	width: 100,
+	height: 80,
+	resizeMode: 'cover'
+    },
+    heading: {
+	fontSize: 18,
+	fontFamily: fonts.poppins_bold,
+	color: colors.textSecondary,
+	marginBottom: 20,
+    },
 })
 
 export default ListCategroy
