@@ -53,7 +53,7 @@ const catagroies= [
 ]
 const _styles = StyleSheet.create({
     container: {
-	marginTop: Platform.OS == "ios" ? 10 : 40,
+	marginTop: Platform.OS == "ios" ? 10 : 25,
 	justifyContent: "center",
 	paddingLeft: 20
     },

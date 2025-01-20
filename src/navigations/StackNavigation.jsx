@@ -7,27 +7,32 @@ import OPTScreen from "../screens/auth/opt/OPTScreen";
 import RegisterScreen from "../screens/auth/register/RegisterScreen";
 import WelcomeScreen from "../screens/welcome/WelcomeScreen";
 import PurchaseScreen from "../screens/home/purchase/PurchaseScreen";
+import SearchScreen from "../screens/home/search/SearchScreen";
+import CategoryScreen from "../screens/home/category/CategoryScreen" 
 import routes from "./routes";
 
 const Stack = createStackNavigator()
 
 const StackNavigation = () => {
-	return (
-		<Stack.Navigator
-			screenOptions={{ headerShown: false }}
-		//initialRouteName={routes.home_purchase}
-		>
-			{/* Auth Screens */}
-			<Stack.Screen name={routes.nav_welcome} component={WelcomeScreen} />
-			<Stack.Screen name={routes.auth_login} component={LoginScreen} />
-			<Stack.Screen name={routes.auth_register} component={RegisterScreen} />
-			<Stack.Screen name={routes.auth_confirm} component={ConfrimEmail} />
-			<Stack.Screen name={routes.auth_opt_pass} component={OPTScreen} />
-			<Stack.Screen name={routes.auth_change_pas} component={ChangePassword} />
-			<Stack.Screen name={routes.home_purchase} component={PurchaseScreen} />
-			{/* home Screen */}
-			<Stack.Screen name={routes.tab} component={TabNavigation} />
-		</Stack.Navigator>
-	);
+    return (
+	<Stack.Navigator
+	screenOptions={{ headerShown: false }}
+	initialRouteName={routes.main_categories}
+	>
+	{/* Auth Screens */}
+	<Stack.Screen name={routes.nav_welcome} component={WelcomeScreen} />
+	<Stack.Screen name={routes.auth_login} component={LoginScreen} />
+	<Stack.Screen name={routes.auth_register} component={RegisterScreen} />
+	<Stack.Screen name={routes.auth_confirm} component={ConfrimEmail} />
+	<Stack.Screen name={routes.auth_opt_pass} component={OPTScreen} />
+	<Stack.Screen name={routes.auth_change_pas} component={ChangePassword} />
+	<Stack.Screen name={routes.home_purchase} component={PurchaseScreen} />
+	{/* home Screen */}
+	<Stack.Screen name={routes.tab} component={TabNavigation} />
+	<Stack.Screen name={routes.search} component={SearchScreen} />
+	{/* other */}
+	<Stack.Screen name={routes.main_categories} component={CategoryScreen} />
+	</Stack.Navigator>
+    );
 }
 export default StackNavigation

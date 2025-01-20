@@ -12,16 +12,14 @@ import colors from "../../../utilities/color"
 import SearchSvg from "../../../assets/svgs/SearchSvg"
 import CartSvg from "../../../assets/svgs/CartSvg"
 import ShareSvg from "../../../assets/svgs/ShareSvg"
+import { useNavigation } from "@react-navigation/native"
+import routes from "../../../navigations/routes"
 
-const TopHeader = ({ handlePress }) => {
-    const [val, setVal] = useState("")
+const TopHeader = () => {
+    const nav = useNavigation()
     return (
 	<View style={_styles.container}>
-
-
-
-
-	<TouchableOpacity onPress={handlePress}>
+	<TouchableOpacity onPress={() => nav.goBack()}>
 	  <BackSvgVector styles={_styles.svg} />
 	</TouchableOpacity>
 
@@ -31,9 +29,9 @@ const TopHeader = ({ handlePress }) => {
 		alignItems:"center"
 	}}
 	>
-
 	<TouchableOpacity 
 	style={{marginRight:20,}}
+	onPress={()=> nav.navigate(routes.search)}
 	>
 	<SearchSvg  style={{opacity:0.8}}/>	
 	</TouchableOpacity>
@@ -47,7 +45,6 @@ const TopHeader = ({ handlePress }) => {
 		opacity: 0.8,
 	}}
 	/>
-
 	<View style={_styles.cartCount}>
 	<Text
 	style={{

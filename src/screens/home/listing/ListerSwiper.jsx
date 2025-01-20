@@ -38,7 +38,7 @@ const ListerSwiper = () => {
 const _styles = StyleSheet.create({
     container: {
 	alignItems: "center",
-	marginTop: 40,
+	marginTop: 25,
     },
     imgSwiper: {
     },

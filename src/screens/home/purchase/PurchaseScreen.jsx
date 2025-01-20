@@ -1,6 +1,5 @@
-import { StyleSheet, View, Platform, FlatList } from "react-native"
+import { StyleSheet, View, StatusBar, Platform, FlatList } from "react-native"
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { useNavigation } from "@react-navigation/native"
 import ImageSwiper from "./ImageSwiper"
 import Context from "./Context"
 import Rating from "./Rating"
@@ -11,11 +10,14 @@ import TopHeader from "./TopHeader"
 import { useState } from "react"
 import BottomMenu from "./BottomMenu"
 const PurchaseScreen = () => {
-    const nav = useNavigation()
-    const [show, setShow] = useState(!true)
     return (
 	<SafeAreaProvider style={_styles.container}>
-	<TopHeader handlePress={() => nav.goBack()} />
+	<StatusBar 
+	barStyle="dark-content"
+	translucent={true}
+	backgroundColor={'transparent'} 
+	/>
+	<TopHeader />
 	<FlatList
 	data={[1]}
 	keyExtraction={item => item.toString()}
@@ -32,8 +34,8 @@ const PurchaseScreen = () => {
 	    </>
 	}
 	/>
-	<PurchaseBtn handlePress={() => setShow(true)} />
-	<BottomMenu show={show} handlePress={() => setShow(false)} />
+	<PurchaseBtn  />
+	<BottomMenu  />
 	</SafeAreaProvider>
     );
 }
@@ -44,7 +46,7 @@ const _styles = StyleSheet.create({
     container: {
 	flex: 1,
 	backgroundColor: "white",
-	paddingTop: Platform.OS == "ios" ? 40 : 0,
+	paddingTop: Platform.OS == "ios" ? 40 : 20,
     },
 })
 export default PurchaseScreen

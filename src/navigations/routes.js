@@ -17,9 +17,8 @@ const routes = {
 	tab_account: "profile",
 
 	home_purchase: "home_purchase",
+	main_categories: "main_categories",
 
-	// random
-	All: "all",
-	super_deals: "super_deals",
+	search: "main_search"
 }
 export default routes

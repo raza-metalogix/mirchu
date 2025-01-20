@@ -5,7 +5,8 @@ const colors = {
     textSecondary: "#000000",
     lightDark: "#F1F4F5",
     darkBlue: "#000033",
-    lightYellow: "#FFF9DE"
+    lightYellow: "#FFF9DE",
+    darkWhite:"#F0F0F5"
 }
 
 export default colors

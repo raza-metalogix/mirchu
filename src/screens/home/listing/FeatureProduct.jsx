@@ -117,7 +117,7 @@ const ListingProduct = ({ heading, handlePress }) => {
 
 const _style = StyleSheet.create({
     container: {
-	marginTop: 40,
+	marginTop: 25,
 	paddingHorizontal: 20,
     },
     heading: {
