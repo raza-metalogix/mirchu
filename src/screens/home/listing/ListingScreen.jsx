@@ -1,5 +1,5 @@
 import { StyleSheet, Platform, StatusBar, FlatList, Image, View, Dimensions } from 'react-native'
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import HeaderCompo from '../../../components/HeaderCompo';
 import { web_banner } from '../../../utilities/images';
 import ListingProduct from './FeatureProduct';
@@ -11,6 +11,7 @@ const ListingScreen = () => {
     const handlePress = () => nav.navigate("home_purchase");
     return (
 	<SafeAreaProvider style={_styles.container}>
+	<SafeAreaView>
 	<StatusBar
 	backgroundColor="white"
 	barStyle="dark-content"
@@ -35,6 +36,7 @@ const ListingScreen = () => {
 	    </View>
 	}
 	/>
+	</SafeAreaView>
 	</SafeAreaProvider>
     );
 }
@@ -42,7 +44,6 @@ const ListingScreen = () => {
 const _styles = StyleSheet.create({
     container: {
 	flex: 1,
-	paddingVertical: Platform.OS === "ios" ? 40 : 0,
 	backgroundColor: "white"
     },
     imgBanner: {

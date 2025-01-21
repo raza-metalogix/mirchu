@@ -8,20 +8,25 @@ import SearchSvg from "../../../../assets/svgs/SearchSvg"
 import colors from "../../../../utilities/color"
 import fonts from "../../../../utilities/fonts"
 
-const TopHeader  = ({handlePress}) => {
+const TopHeader  = ({show}) => {
     const nav = useNavigation()
     return (
 	<View style={_styles.container}>
 	
 	<View style={_styles.oneContainer}>
-	{/* back icons */}
-	<TouchableOpacity onPress={()=> nav.goBack()}>
+	{show && 
+	<TouchableOpacity 
+	    onPress={()=> nav.goBack()}
+	    style={{marginRight:10,}}
+	>
 	    <BackSvgVector styles={_styles.back_svg} />	
 	</TouchableOpacity>
-	{/* Logo */}
+	}
+
+		{/* Logo */}
 	<Image
 	    source={logo}
-	    style={_styles.logo}
+	    style={[_styles.logo,show &&{marginLeft:5}]}
 	/>
 	</View>
 
@@ -42,12 +47,7 @@ const TopHeader  = ({handlePress}) => {
 	    <HeartSvg style={_styles.back_svg} />	
 	</TouchableOpacity>
 	{/* cart */}
-	<TouchableOpacity >
-	<View style={_styles.tag_con}>
-	<Text style={_styles.tag_txt}>15</Text>
-	</View>
-	    <CartSvg style={_styles.back_svg} />	
-	</TouchableOpacity>
+
 	</View>
 
 	</View>
@@ -59,6 +59,7 @@ const _styles = StyleSheet.create({
 	flexDirection:"row",
 	alignItems:"center",
 	justifyContent:"space-between",
+	paddingRight:0,
     },
     oneContainer:{
 	flexDirection:"row",
@@ -74,7 +75,6 @@ const _styles = StyleSheet.create({
 	opacity:0.8
     },
     logo:{
-	marginLeft:15,
 	width:150,
 	resizeMode:"contain"
     },

@@ -2,19 +2,20 @@ import {View, Text, FlatList, TouchableOpacity, StyleSheet } from "react-native"
 import fonts from "../../../../utilities/fonts"
 import colors from "../../../../utilities/color"
 import useCategory from "../category"
-const Context = () => {
+const Context = ({txt}) => {
     const context = ["Milk", "Vegetable", "Meat", "Fruit"];
     const {select, setSelect} = useCategory()
     return (
-	<View>
-	<Text style={_styles.heading}>Categories</Text>
+	<View style={{marginVertical:10}}>
+	<Text style={_styles.heading}>{txt || "Categories"}</Text>
+	{/*
 	<FlatList 
 	style={{marginTop:10}}
 	    data={context}
 	    horizontal
 	    keyExtraction={(_,index) => index.toString()}
 	    showsHorizontalScrollIndicator={false}
-	    ItemSeparatorComponent={()=> <View style={{width:30}}/>}
+	    ItemSeparatorComponent={()=> <View style={{width:15}}/>}
 	    renderItem={({item,index})=>
 		<TouchableOpacity
 		onPress={()=> setSelect(index)}
@@ -28,14 +29,14 @@ const Context = () => {
 		]}>{item}</Text>
 		</TouchableOpacity>
 	    }/>
-
+	    */}
 	</View>
     );
 }
 
 const _styles = StyleSheet.create({
     heading:{
-	fontSize:22,
+	fontSize:25,
 	fontFamily:fonts.poppins_semiBold,
 	color:"black"
     },

@@ -8,7 +8,7 @@ import RegisterScreen from "../screens/auth/register/RegisterScreen";
 import WelcomeScreen from "../screens/welcome/WelcomeScreen";
 import PurchaseScreen from "../screens/home/purchase/PurchaseScreen";
 import SearchScreen from "../screens/home/search/SearchScreen";
-import CategoryScreen from "../screens/home/category/CategoryScreen" 
+import CategoryListingScreen from "../screens/home/category/CategoryListingScreen" 
 import routes from "./routes";
 
 const Stack = createStackNavigator()
@@ -17,7 +17,7 @@ const StackNavigation = () => {
     return (
 	<Stack.Navigator
 	screenOptions={{ headerShown: false }}
-	initialRouteName={routes.main_categories}
+	// initialRouteName={routes.main_categories}
 	>
 	{/* Auth Screens */}
 	<Stack.Screen name={routes.nav_welcome} component={WelcomeScreen} />
@@ -31,7 +31,7 @@ const StackNavigation = () => {
 	<Stack.Screen name={routes.tab} component={TabNavigation} />
 	<Stack.Screen name={routes.search} component={SearchScreen} />
 	{/* other */}
-	<Stack.Screen name={routes.main_categories} component={CategoryScreen} />
+	<Stack.Screen name={routes.main_categories} component={CategoryListingScreen} />
 	</Stack.Navigator>
     );
 }

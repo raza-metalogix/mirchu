@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity,Image, StyleSheet } from "react-native"
+import { View, Text,FlatList, TouchableOpacity,Image, StyleSheet } from "react-native"
 import {HeartSvg} from "../../../../assets/svgs/HeartSvg"
 import CartSvg from "../../../../assets/svgs/CartSvg"
 import colors from "../../../../utilities/color"
@@ -13,30 +13,39 @@ const CategoryList = () => {
 	/>
 	{/* context */}
 	<View style={_styles.twoContainer}>
-	    <Text>{context.heading}</Text>
 
-	<View>
-	    <Text style={_styles.price}>{context.price}</Text>
-	    {/* off */}
+	<Text 
+	style={_styles.headering}
+	>{context.heading.substr(0,18)}...
+	</Text>
+
 	<View 
-	   style={_styles.offContainer} 
+	style={_styles.sub_container}
 	>
-	    <Text
-		style={_styles.subPrice}
+	{/* off */}
+	<View>
+	<Text style={_styles.price}>{context.price}</Text>
+	<View 
+	style={_styles.offContainer} 
+	>
+	<Text
+	style={_styles.subPrice}
 	>{context.sub_price}</Text>
 	<View style={_styles.offTag}>
-	    <Text style={_styles.offTxt}>{context.off}% off</Text>
+	<Text style={_styles.offTxt}>{context.off}% off</Text>
+	</View>
 	</View>
 	</View>
 
+	{/* icons */}
 	<View style={_styles.iconsContainer}>
-	    <TouchableOpacity>
-	    <HeartSvg style={_styles.back_svg} />	
-	    </TouchableOpacity>
+	<TouchableOpacity style={{marginRight:5}}>
+	<HeartSvg style={_styles.back_svg} />	
+	</TouchableOpacity>
 
-	    <TouchableOpacity>
-	    <CartSvg style={_styles.back_svg} />	
-	    </TouchableOpacity>
+	<TouchableOpacity>
+	<CartSvg style={_styles.back_svg} />	
+	</TouchableOpacity>
 	</View>
 
 	</View>
@@ -44,24 +53,43 @@ const CategoryList = () => {
 	</View>
 
 	</View>
+
+
 	</View>
     );
 }
 
 const _styles= StyleSheet.create({
     container:{
-	marginTop:30,
+	width:"48.4%"
     },
     img:{
-	width:100,
-	height:100,
+	width:"100%",
+	height:180,
+	resizeMode:"cover"
     },
     twoContainer:{
-	flexDirection:"row"
+	paddingHorizontal:10,
+	paddingVertical:15,
+	width:"100%",
+    },
+    headering:{
+	fontFamily: fonts.poppins_semiBold,
+	fontSize:16,
+	color:"black",
+    },
+    sub_container:{
+	marginTop:20,
+	flexDirection:"row",
+	alignItems:"flex-end",
+	justifyContent:"space-between"
     },
     cardContainer:{
+	width:"100%",
 	backgroundColor:"white",
-	flexDirection:'column'
+	flexDirection:'column',
+	borderRadius:10,
+	overflow:"hidden"
     },
     price:{
 	fontSize:20,
@@ -95,8 +123,8 @@ const _styles= StyleSheet.create({
 	fontFamily: fonts.poppins_medium
     },
     back_svg:{
-	width:30,
-	height:30,
+	width:25,
+	height:25,
 	opacity:0.8
     },
     iconsContainer:{
@@ -105,7 +133,7 @@ const _styles= StyleSheet.create({
 })
 
 const context = {
-    img:"https://mirchu.pk/cdn/shop/files/1_6f3e2951-dced-48bc-8085-64c4b70d3eab.png?v=1722250639&width=360",
+    img:"https://mirchu.pk/cdn/shop/files/1708200373_cf755cfa-d607-4c98-a8c9-3fafe45cb311.png?v=1722250640&width=360",
     heading:"Buy Yellow Potatoes(پیلے آلو)-1kg",
     price: "Rs. 78",
     sub_price:"Rs. 92",

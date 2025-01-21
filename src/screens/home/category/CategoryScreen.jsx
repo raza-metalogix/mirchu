@@ -4,6 +4,7 @@ import colors from "../../../utilities/color"
 import TopHeader from "./components/TopHeader"
 import Context from "./components/Context"
 import CategoryList from "./components/CategoryList"
+import Listing from "./components/Listing"
 const CategoryScreen = () => {
     return (
 	<SafeAreaProvider>
@@ -14,11 +15,10 @@ const CategoryScreen = () => {
 	    backgroundColor={colors.darkWhite}
 	    barStyle="dark-content"
 	/>
-    
 	<TopHeader />
 	<Context />
-	<CategoryList/>
-
+	<Listing />
+	
 	</SafeAreaView>
 	</SafeAreaProvider>
     );
