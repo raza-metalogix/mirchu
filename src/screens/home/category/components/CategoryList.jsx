@@ -61,7 +61,7 @@ const CategoryList = () => {
 
 const _styles= StyleSheet.create({
     container:{
-	width:"48.4%"
+	width:"48.4%",
     },
     img:{
 	width:"100%",
@@ -86,7 +86,7 @@ const _styles= StyleSheet.create({
     },
     cardContainer:{
 	width:"100%",
-	backgroundColor:"white",
+	backgroundColor: "#F0F0F5",
 	flexDirection:'column',
 	borderRadius:10,
 	overflow:"hidden"

@@ -6,30 +6,8 @@ const Context = ({txt}) => {
     const context = ["Milk", "Vegetable", "Meat", "Fruit"];
     const {select, setSelect} = useCategory()
     return (
-	<View style={{marginVertical:10}}>
+	<View style={{marginBottom:10}}>
 	<Text style={_styles.heading}>{txt || "Categories"}</Text>
-	{/*
-	<FlatList 
-	style={{marginTop:10}}
-	    data={context}
-	    horizontal
-	    keyExtraction={(_,index) => index.toString()}
-	    showsHorizontalScrollIndicator={false}
-	    ItemSeparatorComponent={()=> <View style={{width:15}}/>}
-	    renderItem={({item,index})=>
-		<TouchableOpacity
-		onPress={()=> setSelect(index)}
-		activeOpacity={0.6}
-		style={[_styles.cart_cont, 
-		   select==index && { backgroundColor:colors.primary }
-		]}>
-	
-		<Text style={[_styles.cart_txt,
-		    select == index && {color:"white"}
-		]}>{item}</Text>
-		</TouchableOpacity>
-	    }/>
-	    */}
 	</View>
     );
 }

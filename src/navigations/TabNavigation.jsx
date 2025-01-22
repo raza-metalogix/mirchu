@@ -7,6 +7,7 @@ import TabLabel from "../components/TabLabel";
 import ListingScreen from "../screens/home/listing/ListingScreen";
 import SearhcScreen from "../screens/home/search/SearchScreen";
 import CategoryScreen from "../screens/home/category/CategoryScreen" 
+import CartScreen from "../screens/home/cart/CartScreen"
 import colors from "../utilities/color";
 import routes from "./routes";
 
@@ -15,7 +16,13 @@ const Tab = createBottomTabNavigator()
 const TabNavigation = () => {
     return (
 	<Tab.Navigator
-	screenOptions={{ headerShown: false }}
+	screenOptions={{
+	    headerShown: false,
+	    tabBarStyle:{
+		paddingTop:10,
+		height:85,
+	    }
+	}}
 	>
 	<Tab.Screen
 	name={routes.tab_listing}
@@ -23,7 +30,10 @@ const TabNavigation = () => {
 	options={{
 	    tabBarLabel: (el) => <TabLabel txt="Home" foc={el.focused} />,
 		tabBarIcon: (el) => {
-		    return <HomeSvg foc={el.focused} />
+		    return <HomeSvg
+		    color={el.focused && colors.primary}
+	    style={{ width: 25, height: 25, opacity: el.focused?1:0.8 }}
+			/>
 		},
 	}}
 	/>
@@ -41,13 +51,13 @@ const TabNavigation = () => {
 	/>
 	<Tab.Screen
 	name={routes.tab_cart}
-	component={ListingScreen}
+	component={CartScreen}
 	options={{
 	    tabBarLabel: (el) => <TabLabel txt="Cart" foc={el.focused} />,
 		tabBarIcon: (el) =>
 		<CartSvg
 	    color={el.focused && colors.primary}
-	    style={{ width: 20, height: 20 }}
+	    style={{ width: 25, height: 25, opacity: el.focused?1:0.8 }}
 		/>,
 	}}
 	/>
@@ -59,7 +69,7 @@ const TabNavigation = () => {
 		tabBarIcon: (el) =>
 		<PersonSvg
 	    color={el.focused && colors.primary}
-	    style={{ width: 20, height: 20 }}
+	    styles={{ width: 25, height: 25, opacity: el.focused?1:0.8 }}
 		/>,
 	}}
 	/>

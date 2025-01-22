@@ -18,7 +18,9 @@ const routes = {
 
 	home_purchase: "home_purchase",
 	main_categories: "main_categories",
+	
 
-	search: "main_search"
+	search: "main_search",
+	cart: "main_cart"
 }
 export default routes

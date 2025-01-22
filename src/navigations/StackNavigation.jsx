@@ -9,6 +9,7 @@ import WelcomeScreen from "../screens/welcome/WelcomeScreen";
 import PurchaseScreen from "../screens/home/purchase/PurchaseScreen";
 import SearchScreen from "../screens/home/search/SearchScreen";
 import CategoryListingScreen from "../screens/home/category/CategoryListingScreen" 
+import CartScreen from "../screens/home/cart/CartScreen"
 import routes from "./routes";
 
 const Stack = createStackNavigator()
@@ -32,6 +33,7 @@ const StackNavigation = () => {
 	<Stack.Screen name={routes.search} component={SearchScreen} />
 	{/* other */}
 	<Stack.Screen name={routes.main_categories} component={CategoryListingScreen} />
+	<Stack.Screen name={routes.cart} component={CartScreen} />
 	</Stack.Navigator>
     );
 }

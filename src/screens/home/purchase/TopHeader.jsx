@@ -36,7 +36,9 @@ const TopHeader = () => {
 	<SearchSvg  style={{opacity:0.8}}/>	
 	</TouchableOpacity>
     
-	<TouchableOpacity style={_styles.cartContainer}>
+	<TouchableOpacity
+	onPress={()=> nav.navigate(routes.cart)}
+	style={_styles.cartContainer}>
 	<CartSvg
 	color="black"
 	style={{

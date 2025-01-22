@@ -12,7 +12,7 @@ const CategoryScreen = () => {
 	    style={_styles.container}
 	>
 	<StatusBar 
-	    backgroundColor={colors.darkWhite}
+	    backgroundColor="white"
 	    barStyle="dark-content"
 	/>
 	<TopHeader />
@@ -26,7 +26,8 @@ const CategoryScreen = () => {
 
 const _styles = StyleSheet.create({
     container:{
-	backgroundColor: colors.darkWhite,
+	flex:1,
+	backgroundColor: "white",
 	paddingHorizontal:20,
     }
 })

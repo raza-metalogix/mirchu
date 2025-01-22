@@ -11,7 +11,7 @@ const CategoryListingScreen = () => {
 	    style={_styles.container}
 	>
 	<StatusBar 
-	    backgroundColor={colors.darkWhte}
+	    backgroundColor="white"
 	    barStyle="dark-content"
 	/>
 	
@@ -51,7 +51,8 @@ const CategoryListingScreen = () => {
 
 const _styles = StyleSheet.create({
     container:{
-	backgroundColor: colors.darkWhite,
+	flex:1,
+	backgroundColor: "white",
 	paddingHorizontal:10,
     }
 })
