@@ -23,6 +23,7 @@ const HeaderCompo = () => {
 	</TouchableOpacity>
 
 	<TouchableOpacity
+	    onPress={()=> nav.navigate(routes.fav_items)}
 	style={_style.heartContainer}
 	>
 	<View>

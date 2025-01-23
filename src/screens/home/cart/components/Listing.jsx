@@ -1,8 +1,10 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native"
 import fonts from "../../../../utilities/fonts"
 import colors from "../../../../utilities/color"
+import {useState} from "react"
 
 const Listing = () => {
+    const [num, setNum] = useState(1)
     return (
 	<View style={_styles.container}>
 	{/* Checkout box */}
@@ -30,13 +32,19 @@ const Listing = () => {
 	{/* counter */}
 	<View style={_styles.count_con}>
 
-	<TouchableOpacity style={_styles.count_box}>
+	<TouchableOpacity 
+	activeOpacity={0.5}
+	onPress={()=> num>1 && setNum(num-1)}
+	style={_styles.count_box}>
 	<Text style={{color:"black",opacity:0.5}}>-</Text>
 	</TouchableOpacity>
 
-	<Text style={_styles.count_txt}>1</Text>
+	<Text style={_styles.count_txt}>{num}</Text>
 
-	<TouchableOpacity style={_styles.count_box}>
+	<TouchableOpacity 
+	activeOpacity={0.5}
+	onPress={()=> num<7 && setNum(num+1)}
+	style={_styles.count_box}>
 	<Text style={{color:"black",opacity:0.5}}>+</Text>
 	</TouchableOpacity>
 

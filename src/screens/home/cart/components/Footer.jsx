@@ -40,6 +40,7 @@ const _styles =  StyleSheet.create({
     },
     checkout_con:{
 	flexDirection:"row",
+	alignItems:"center"
     },
     box:{
 	width:20,
@@ -51,6 +52,7 @@ const _styles =  StyleSheet.create({
     },
     sub_container:{
 	flexDirection:"row",
+	alignItems:"center"
     },
     total_con:{
 	flexDirection:"row"

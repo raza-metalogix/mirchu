@@ -10,6 +10,7 @@ import PurchaseScreen from "../screens/home/purchase/PurchaseScreen";
 import SearchScreen from "../screens/home/search/SearchScreen";
 import CategoryListingScreen from "../screens/home/category/CategoryListingScreen" 
 import CartScreen from "../screens/home/cart/CartScreen"
+import FavItemScreen from "../screens/home/favourite/FavItemScreen"
 import routes from "./routes";
 
 const Stack = createStackNavigator()
@@ -18,7 +19,7 @@ const StackNavigation = () => {
     return (
 	<Stack.Navigator
 	screenOptions={{ headerShown: false }}
-	// initialRouteName={routes.main_categories}
+	// initialRouteName={routes.fav_items}
 	>
 	{/* Auth Screens */}
 	<Stack.Screen name={routes.nav_welcome} component={WelcomeScreen} />
@@ -34,6 +35,8 @@ const StackNavigation = () => {
 	{/* other */}
 	<Stack.Screen name={routes.main_categories} component={CategoryListingScreen} />
 	<Stack.Screen name={routes.cart} component={CartScreen} />
+
+	<Stack.Screen name={routes.fav_items} component={FavItemScreen} />
 	</Stack.Navigator>
     );
 }

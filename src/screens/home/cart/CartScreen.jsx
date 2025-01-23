@@ -5,6 +5,7 @@ import Context from "./components/Context"
 import colors from "../../../utilities/color"
 import Listing from "./components/Listing"
 import Footer from "./components/Footer"
+
 const CartScreen = () => {
     return(
 	<SafeAreaProvider>

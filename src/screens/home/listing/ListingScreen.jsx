@@ -1,7 +1,6 @@
 import { StyleSheet, Platform, StatusBar, FlatList, Image, View, Dimensions } from 'react-native'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import HeaderCompo from '../../../components/HeaderCompo';
-import { web_banner } from '../../../utilities/images';
 import ListingProduct from './FeatureProduct';
 import ListCategroy from './ListCategory';
 import ListerSwiper from './ListerSwiper';
@@ -28,10 +27,6 @@ const ListingScreen = () => {
 	    <ListingProduct
 	    handlePress={handlePress}
 	    heading="Feature Product" />
-	    <Image
-	    style={_styles.imgBanner}
-	    source={web_banner}
-	    />
 	    <ListingProduct heading="Popular Product" />
 	    </View>
 	}

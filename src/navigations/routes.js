@@ -21,6 +21,7 @@ const routes = {
 	
 
 	search: "main_search",
-	cart: "main_cart"
+	cart: "main_cart",
+	fav_items:"main_fav_items"
 }
 export default routes
