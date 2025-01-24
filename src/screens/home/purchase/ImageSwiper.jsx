@@ -1,9 +1,7 @@
 import { View, Image, Dimensions, Text, StyleSheet } from "react-native"
 import { SwiperFlatList } from "react-native-swiper-flatlist";
-import { useRef, useState } from "react"
+import { useState } from "react"
 const ImageSwiper = () => {
-
-    const ref = useRef(null)
     const [curr, setCurr] = useState(1)
     return (
 	<View style={_style.container}>
@@ -13,7 +11,6 @@ const ImageSwiper = () => {
 	>{curr} / 5</Text>
 	</View>
 	<SwiperFlatList
-	ref={ref}
 	index={0}
 	onChangeIndex={({ index }) => setCurr(index + 1)}
 	data={imgsContext}
@@ -34,7 +31,7 @@ const _style = StyleSheet.create({
     },
     img: {
 	width: Dimensions.get("screen").width,
-	height: 360,
+	height: 350,
 	resizeMode: "cover"
     },
     counter: {

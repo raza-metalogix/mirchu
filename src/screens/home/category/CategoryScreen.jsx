@@ -2,7 +2,6 @@ import {View, Text, StyleSheet, StatusBar } from "react-native"
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import colors from "../../../utilities/color"
 import HeaderCompo from '../../../components/HeaderCompo';
-import Context from "./components/Context"
 import CategoryList from "./components/CategoryList"
 import Listing from "./components/Listing"
 const CategoryScreen = () => {
@@ -15,9 +14,8 @@ const CategoryScreen = () => {
 	    backgroundColor="white"
 	    barStyle="dark-content"
 	/>
-	<HeaderCompo show={false} />
+	<HeaderCompo show={false} txt="Category" search={true} heart={true} border={true}/>
 	<View style={_styles.sub_container}>
-	<Context />
 	<Listing />
 	</View>
 	</SafeAreaView>
@@ -31,10 +29,9 @@ const _styles = StyleSheet.create({
 	backgroundColor: "white",
     },
     sub_container:{
-	paddingHorizontal:20,
-	marginTop:13,
+	paddingHorizontal:10,
 	flex:1
-    }
+    },
 })
 
 export default CategoryScreen

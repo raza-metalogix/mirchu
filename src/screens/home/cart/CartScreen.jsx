@@ -1,7 +1,6 @@
 import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context"
 import {View, StyleSheet, StatusBar, FlatList} from "react-native"
-import TopHeader from "../category/components/TopHeader"
-import Context from "./components/Context"
+import HeaderCompo from '../../../components/HeaderCompo';
 import colors from "../../../utilities/color"
 import Listing from "./components/Listing"
 import Footer from "./components/Footer"
@@ -16,16 +15,15 @@ const CartScreen = () => {
 	    backgroundColor="white"
 	    barStyle="dark-content"
 	/>
-
-	<Context />
+	<HeaderCompo border={true} txt="Carts" del={true} />
 	<FlatList 
-	    style={{height:"82%"}}
+	    style={{height:"82%",paddingHorizontal:10, paddingTop:10, }}
 	    showsVerticalScrollIndicator={false}
-	    ItemSeparatorComponent={()=><View style={{height:30}}/>}
-	    ListFooterComponent={()=> <View style={{height:300}}/>}
+	    ItemSeparatorComponent={()=><View style={{height:15}}/>}
+	    ListFooterComponent={()=> <View style={{height:200}}/>}
 	    data={[...Array(10)]}
 	    keyExtraction={(_,index)=> index.toString()}
-	    renderItem={({_})=><Listing />}
+	    renderItem={({_,index})=><Listing index={index} />}
 	/>
 
 	<Footer />
@@ -38,7 +36,6 @@ const _styles = StyleSheet.create({
     container:{
 	flex:1,
 	backgroundColor: "white",
-	paddingHorizontal:20
     }
 })
 

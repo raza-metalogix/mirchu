@@ -1,8 +1,6 @@
 import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
 import { View, Text, StyleSheet, FlatList, StatusBar } from "react-native"
-import TopHeader from "./components/TopHeader"
 import HeaderCompo from '../../../components/HeaderCompo';
-import Context from "./components/Context"
 import colors from "../../../utilities/color"
 import CategoryList from "./components/CategoryList"
 const CategoryListingScreen = () => {
@@ -16,14 +14,13 @@ const CategoryListingScreen = () => {
 	    barStyle="dark-content"
 	/>
 
-	<HeaderCompo show={true} />
+	<HeaderCompo show={true} txt="Fresh Meat" search={true} heart={true} border={true} />
 	<View 
 	    style={{
 		marginTop:10,
 		paddingHorizontal:10,
 	    }}
 	>
-	<Context txt="Fresh Vegetables"/>
 	<FlatList 
 	data={[...Array(10)]}
 	style={{ paddingTop:10, }}

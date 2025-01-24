@@ -1,211 +1,163 @@
 import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, TouchableHighlight, Platform } from "react-native";
+import CardHeading from "../../../components/CardHeading"
+import PlusSvg from "../../../assets/svgs/plus_svg"
 import colors from "../../../utilities/color";
 import fonts from "../../../utilities/fonts";
 import { productImg } from "../../../utilities/images";
+
+
+const context = {
+    img:"https://mirchu.pk/cdn/shop/files/1708200145.png?v=1721381995&width=360",
+    heading:"Buy Yellow Potatoes(پیلے آلو)-1kg",
+    price: "Rs. 78",
+    tag:"Vegetable"
+}
+
 const ListingProduct = ({ heading, handlePress }) => {
-    const context = [...Array(5)]
     return (
-	<View style={_style.container}>
-	<Text style={_style.heading}>{heading}</Text>
+	<View style={_styles.container}>
+	    <CardHeading heading={heading} btnText="See All" />
 	<FlatList
 	scrollEnabled={false}
-	data={context}
-	ListFooterComponent={()=> 
-	    <View style={_style.btn_container}>
-	    <TouchableHighlight
-	      activeOpacity={0.6}
-	    underlayColor="#DDDDDD"
-		onPress={()=> console.log()}
-		style={_style.btn}>
-		<Text style={_style.btn_txt}>View All</Text>
-	    </TouchableHighlight>
-	    </View>
-	}
+	data={[...Array(5)]}
 	ItemSeparatorComponent={() => <View style={{
-	    height: Platform.OS === "ios" ? 30 : 20,
+	    height: 15,
 	}} />}
 	keyExtractor={(_, index) => index.toString()}
-	renderItem={({ _, index }) =>
-	    <View style={_style.box}>
-	    <TouchableOpacity
-	    onPress={handlePress} key={index}>
-	    <View style={_style.productContainer}>
-
-	    {/* img */}
-	    <View style={_style.imgContainer}>
-	    {/* off tag */}
-	    <View style={_style.offTag}>
-	    <Text
-	    style={{
-		color: "white",
-		fontSize:10,
-		fontFamily: fonts.poppins_semiBold
-	    }}
-	    >
-	    90 %
-	    </Text>
-	    </View>
-
-	    <Image
-	    source={{uri:"https://mirchu.pk/cdn/shop/files/1_165620e0-cde7-4c39-943b-d0a85275d4e1.png?v=1722239194&width=360"}}
-	    style={_style.img}
-	    />
-	    </View>
-
-	    <View style={{ marginLeft: 0 }}>
-	    <Text
-	    style={{ color: "black", fontSize: 16 }}>
-	    Buy Coriander-Dhanya (سب...
-	    </Text>
-
-	    <View style={{ marginTop: 5 }}>
-	    <View style={{ flexDirection: 'row' }}>
-
-	    {/* Price tag */}
-	    <View style={{
-		backgroundColor: colors.primary,
-		    width: 60,
-		    alignItems: 'center',
-		    justifyContent: 'center',
-		    borderRadius: 5
-	    }}>
-	    <Text
-	    style={{ color: "white" }}
-	    >
-	    Sale
-	    </Text>
-	    </View>
-	    {/* rating */}
-	    <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 10 }}>
-	    {[...Array(5)].map((_, index) =>
-		<Image
-		key={index}
-		source={{ uri: "https://mirchu.pk/cdn/shop/t/3/assets/star.png?v=109682652855224361591725598506" }}
-		style={{ width: 15, height: 15 }}
-		/>)}
-	    </View>
-
-
-	    </View>
-	    <View style={{
-		flexDirection: "row",
-		    marginTop: 5,
-		    alignItems: "center"
-	    }}>
-	    <Text
-	    style={{
-		textDecorationLine: "line-through",
-		fontSize: 12,
-		color:"black",
-		opacity:0.5,
-		fontFamily:fonts.poppins_medium
-	    }}>
-	    RS 120
-	    </Text>
-	    <Text style={{
-		color: colors.secondary,
-		    fontSize: 16,
-		    fontWeight: "600",
-		    marginLeft: 10,
-		    fontFamily:fonts.poppins_semiBold
-	    }}>Rs 98</Text>
-	    </View>
-
-	    </View>
-
-	    </View>
-
-	    </View>
-	    </TouchableOpacity>
-	    </View>
+	renderItem={({_})=>
+		<TouchableOpacity
+		    activeOpacity={0.6}
+		    onPress={handlePress}
+		    style={_styles.cart_cont}
+		>
+		    <Image 
+			source={{uri: context.img}}
+			style={_styles.img}
+		     />
+		    <View style={_styles.sub_cont}>
+			<View>
+			    <View style={_styles.rating_cont}>
+				<View style={_styles.tag}>
+				    <Text style={_styles.tag_txt}>{context.tag}</Text>
+				</View>
+				<Rating />
+			    </View>
+			    <Text style={_styles.card_heading}>{context.heading}</Text>
+			</View>
+			<Price />
+		    </View>
+		</TouchableOpacity>
 	}
 	/>
 	</View>
     );
 }
+const Price = () => {
+		
+    return (
+	<View style={{flexDirection:'row', flex:1, justifyContent:'space-between'}}>
+	    <Text style={_styles.card_price}> {context.price}</Text>
+	    <View style={_styles.plus_icon_cont}>
+		<PlusSvg style={_styles.plus_icon} />
+	    </View>
+	</View>
+    )
+}
 
-const _style = StyleSheet.create({
+const Rating = () => {
+    const img = "https://mirchu.pk/cdn/shop/t/3/assets/star.png?v=109682652855224361591725598506"
+    return(
+	<View style={{flexDirection:"row", alignItems:'center'}}>
+	    <Image 
+		source={{uri:img}}
+		style={{
+		    width:15,
+		    height:12,
+		}}
+	    />
+	    <Text style={_styles.rating_txt}> 4.6</Text>
+	</View>
+    )
+}
+
+const _styles = StyleSheet.create({
     container: {
 	marginTop: 30,
-	paddingHorizontal: 20,
+	paddingHorizontal: 10,
     },
-    heading: {
-	fontSize: 18,
-	fontFamily: fonts.poppins_bold,
-	color: colors.textSecondary,
-	marginBottom: 10,
+    cart_cont:{
+	backgroundColor:"#F5F5F5",
+	padding:10,
+	borderRadius:10,
+	flexDirection:'row',
     },
-    box: {
-	position: "relative",
+    img:{
+	width:"32%",
+	height:110,
+	resizeMode:"cover",
+	borderRadius:10,
     },
-    imgContainer: {
-	paddingTop: 20,
-	paddingRight: 5,
-	position: 'relative',
-	overflow: "hidden",
-	marginRight: 10
-
+    sub_cont:{
+	marginLeft:15,
+	paddingRight:5,
+	flex:1,
+	justifyContent:"space-between"
     },
-    img: {
-	width: 80,
-	height: 80,
-	borderRadius: 6,
-	resizeMode:"cover"
-    },
-    offTag: {
-	position: 'absolute',
-	right: 1,
-	top: 0,
-	zIndex: 1,
-	backgroundColor: colors.secondary,
-	paddingVertical: 2,
-	paddingHorizontal: 7
-
-    },
-    productContainer: {
-	flexDirection: "row"
-    },
-    productTag: {
-	color: "white",
-	fontSize: 10,
-	backgroundColor: colors.secondary,
-	width: 60,
-	textAlign: "center",
-	paddingVertical: 2,
-	borderRadius: 3,
-    },
-    addBtn: {
-	position: "absolute",
-	right: 0,
-	bottom: 20,
-	backgroundColor: colors.secondary,
-	width: 90,
-	height: 45,
-	alignItems: "center",
-	justifyContent: "center",
-	borderRadius: 5,
-    },
-    addText: {
-	color: "white",
-	fontSize: 16,
-	fontWeight: "600"
-    },
-    btn_container:{
-	alignItems:"flex-end",
-    },
-    btn:{
-	backgroundColor:"white",
-	width:"20%",
-	height:"35%",
-	alignItems:'center',
-	justifyContent:'center',
-	borderBottomWidth:2,
-	borderColor:colors.secondary,
-    },
-    btn_txt:{
+    card_heading:{
 	color:"black",
+	fontSize: 14,
+	fontFamily: fonts.poppins_medium,
+	marginBottom:10,
+	width:"85%"
+    },
+    card_price:{
+	color:"black",
+	fontSize: 16,
+	fontFamily: fonts.poppins_semiBold,
+	color: colors.secondary
+    },
+    tag:{
+	backgroundColor: colors.lightYellow,
+	paddingHorizontal:10,
+	paddingVertical:3,
+	borderRadius:7
+    },
+    tag_txt:{
+	color:"black",
+	fontSize:10,
 	fontFamily: fonts.poppins_medium
+    },
+    rating_cont:{
+	flexDirection:'row',
+	justifyContent:"space-between",
+	marginBottom:5
+    },
+    rating_txt:{
+	color:"black",
+	fontFamily: fonts.poppins_regular, fontSize:12
+    },
+    plus_icon_cont:{
+	width:30,
+	height:30,
+	justifyContent:"center",
+	borderRadius:30,
+	backgroundColor:"white",
+
+	shadowColor:"#000",
+	shadowOffset:{
+	    width:0,
+	    height:1
+	},
+	shadowOpacity:0.25,
+	shadowRadius: 0.84,
+
+	elevation: 2,
+    },
+    plus_icon:{
+	with:20,
+	height:20,
     }
+    
 })
 
 export default ListingProduct

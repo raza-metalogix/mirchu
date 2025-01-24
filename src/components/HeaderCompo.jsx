@@ -2,17 +2,20 @@ import { View, Image, StyleSheet, TouchableOpacity, Platform, Text } from "react
 import { logo } from "../utilities/images";
 import SearchSvg from "../assets/svgs/SearchSvg"
 import BackSvgVector from "../assets/svgs/back_svg_vector"
+import CartSvg from "../assets/svgs/CartSvg"
+import DeleteSvg from "../assets/svgs/delete_svg"
 import { HeartSvg } from "../assets/svgs/HeartSvg"
 import colors from "../utilities/color"
 import fonts from "../utilities/fonts"
 import { useNavigation } from "@react-navigation/native"
 import routes from "../navigations/routes"
-const HeaderCompo = ({show}) => {
+const HeaderCompo = ({show, txt, border, showlogo, search, heart, cart, del}) => {
     const nav = useNavigation()
     return (
-	<View style={[_style.container,{
-	    paddingRight: 20,
-	    paddingLeft:show ? 10 : 20,
+	<View style={[_style.container, border && {
+	borderBottomColor: "#e6e6e6",
+	borderBottomWidth: 1,
+	paddingBottom: 5,
 	}]}>
 
 	<View style={{flexDirection:'row', alignItems:"center"}}>
@@ -25,44 +28,75 @@ const HeaderCompo = ({show}) => {
 	</TouchableOpacity>
 	}
 
-	<Image source={logo} style={[_style.image,{width: show ? "50%":"55%"}]} />
+	{txt && <Text style={_style.heading}>{txt}</Text> }
+
+	{showlogo && <Image 
+		    source={logo}
+		    style={[_style.image,{width: show ? "50%":"55%"}]}
+		/>}
 
 	</View>
 
 	<View
-	style={{flexDirection:"row", alignItems:"center"}}
-	>
-	<TouchableOpacity
-	    style={{
-		opacity: 0.7
-	    }}
-	onPress={()=> nav.navigate(routes.search)}
-	>
-	    <SearchSvg  /> 
-	</TouchableOpacity>
+	    style={{flexDirection:"row", alignItems:"center"}}
+	    >
+	    {search && <TouchableOpacity
+		    style={{
+			opacity: 0.7
+		    }}
+		    onPress={()=> nav.navigate(routes.search)}
+		    >
+			<SearchSvg  /> 
+		</TouchableOpacity>}
 
-	<TouchableOpacity
-	    onPress={()=> nav.navigate(routes.fav_items)}
-	style={_style.heartContainer}
-	>
-	<View>
-	<View style={_style.tagText}>
-	<Text style={{
-	    fontFamily: fonts.poppins_medium,
-		color: "white",
-		fontSize: 11,
-	}}>15</Text>
-	</View>
-	<HeartSvg
-	style={{
-	    width: 25,
-	    height: 25,
-	    opacity:0.8
-	}}
-	/>
-	</View>
-	</TouchableOpacity>
+	{ heart &&  <TouchableOpacity
+		onPress={()=> nav.navigate(routes.fav_items)}
+		style={_style.heartContainer}
+		>
+		    <View>
+			<View style={_style.tagText}>
+			<Text style={{
+			    fontFamily: fonts.poppins_medium,
+			    color: "white",
+			    fontSize: 11,
+			}}>15</Text>
+			</View>
+			<HeartSvg
+			    style={{
+				width: 25,
+				height: 25,
+				opacity:0.8
+			    }}
+			    />
+		</View>
+	</TouchableOpacity> }
 
+	{ cart &&  <TouchableOpacity
+		onPress={()=> nav.navigate(routes.fav_items)}
+		style={_style.heartContainer}
+		>
+		    <View>
+			<View style={_style.tagText}>
+			    <Text style={{
+				fontFamily: fonts.poppins_medium,
+				color: "white",
+				fontSize: 11,
+			    }}>15</Text>
+			</View>
+			<CartSvg
+			    style={{
+			    width: 25,
+			    height: 25,
+			    opacity:0.8
+			    }}
+			/>
+		  </View>
+	</TouchableOpacity> }  
+	{del && 
+	<TouchableOpacity>
+	    <DeleteSvg style={_style.svg} />
+	</TouchableOpacity>
+	}
 	</View>
 	</View >
     );
@@ -74,9 +108,14 @@ const _style = StyleSheet.create({
 	alignItems: "center",
 	justifyContent: "space-between",
 	position: "relative",
-	borderBottomColor: "#e6e6e6",
-	borderBottomWidth: 1,
-	paddingBottom: 5,
+	height:45,
+	paddingRight: 20,
+	paddingLeft:10,
+    },
+    heading:{
+	fontSize:18,
+	fontFamily:fonts.poppins_semiBold,
+	color:"black",
     },
     image: {
 	height: 50,
@@ -119,6 +158,11 @@ const _style = StyleSheet.create({
 	height:25,
 	opacity:0.8
     },
+    svg:{
+	width:25,
+	height:25,
+	opacity:0.7
+    }
 })
 
 export default HeaderCompo

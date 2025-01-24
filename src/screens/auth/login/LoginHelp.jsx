@@ -1,11 +1,14 @@
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from "react-native"
 import colors from "../../../utilities/color";
 import fonts from "../../../utilities/fonts";
-const LoginHelp = ({ handlePress }) => {
+import routes from "../../../navigations/routes"
+import {useNavigation} from "@react-navigation/native"
+const LoginHelp = () => {
+	const nav = useNavigation()
 	return (
 		<View style={_styles.container}>
 			{/* Forgot */}
-			<TouchableOpacity onPress={handlePress}>
+			<TouchableOpacity onPress={()=> nav.navigate(routes.auth_confirm)}>
 				<Text style={_styles.text}>Forgot Password</Text>
 			</TouchableOpacity>
 		</View>

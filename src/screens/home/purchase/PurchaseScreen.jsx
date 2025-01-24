@@ -1,23 +1,24 @@
 import { StyleSheet, View, StatusBar, Platform, FlatList } from "react-native"
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import HeaderCompo from '../../../components/HeaderCompo';
 import ImageSwiper from "./ImageSwiper"
 import Context from "./Context"
 import Rating from "./Rating"
 import PurchaseBtn from "./PurchaseBtn"
 import PolicySection from "./PolicySection"
 import Description from "./Description"
-import TopHeader from "./TopHeader"
 import { useState } from "react"
 import BottomMenu from "./BottomMenu"
 const PurchaseScreen = () => {
     return (
-	<SafeAreaProvider style={_styles.container}>
+	<SafeAreaProvider >
 	<StatusBar 
 	barStyle="dark-content"
 	translucent={true}
 	backgroundColor={'transparent'} 
 	/>
-	<TopHeader />
+	<SafeAreaView style={_styles.container}>
+	    <HeaderCompo show={true}  search={true} cart={true} />
 	<FlatList
 	data={[1]}
 	keyExtraction={item => item.toString()}
@@ -25,7 +26,7 @@ const PurchaseScreen = () => {
 	renderItem={() =>
 	    <>
 	    <ImageSwiper />
-	    <View style={{ paddingHorizontal: 20 }}>
+	    <View style={{ paddingHorizontal: 10 }}>
 	    <Context />
 	    <Rating />
 	    <PolicySection />
@@ -36,6 +37,7 @@ const PurchaseScreen = () => {
 	/>
 	<PurchaseBtn  />
 	<BottomMenu  />
+	</SafeAreaView>
 	</SafeAreaProvider>
     );
 }
@@ -46,7 +48,6 @@ const _styles = StyleSheet.create({
     container: {
 	flex: 1,
 	backgroundColor: "white",
-	paddingTop: Platform.OS == "ios" ? 40 : 20,
     },
 })
 export default PurchaseScreen

@@ -31,7 +31,7 @@ const RegisterForm = ({ handlePress }) => {
 				password: ""
 			}}
 			validationSchema={registerYup}
-			onSubmit={handlePress}
+			onSubmit={val=>console.log(val)}
 
 		>
 			{({ values, handleChange, handleSubmit, errors, touched }) => (
@@ -109,7 +109,7 @@ const RegisterForm = ({ handlePress }) => {
 							text="REGISTER"
 							color={colors.primary}
 							textColor="white"
-							handlePress={handleSubmit}
+							handlePress={handlePress}
 						/>
 					</View>
 				</View>

@@ -5,6 +5,7 @@ import ListingProduct from './FeatureProduct';
 import ListCategroy from './ListCategory';
 import ListerSwiper from './ListerSwiper';
 import { useNavigation } from "@react-navigation/native";
+import PopularListing from "./PopularListing"
 const ListingScreen = () => {
     const nav = useNavigation();
     const handlePress = () => nav.navigate("home_purchase");
@@ -15,19 +16,20 @@ const ListingScreen = () => {
 	backgroundColor="white"
 	barStyle="dark-content"
 	/>
-	<HeaderCompo show={false} />
+	<HeaderCompo border={true} showlogo={true} search={true} heart={true} />
 	<FlatList
 	showsVerticalScrollIndicator={false}
-	data={[3]}
+	data={[1]}
 	keyExtractor={(_, index) => index.toString()}
-	ListFooterComponent={()=> <View style={{height:100}}/>}
+	ListFooterComponent={()=> <View style={{height:200}}/>}
 	renderItem={({ _, index }) => <View
 	    key={index}>
 	    <ListerSwiper />
 	    <ListCategroy />
+	    <PopularListing />
 	    <ListingProduct
-	    handlePress={handlePress}
-	    heading="Feature Product" />
+		handlePress={handlePress}
+		heading="Feature Product" />
 	    </View>
 	}
 	/>

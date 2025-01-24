@@ -1,15 +1,18 @@
 import { TouchableOpacity, Dimensions, StyleSheet, View, Text, } from "react-native"
 import colors from "../../../../utilities/color"
 import fonts from "../../../../utilities/fonts"
-
+import {useState, useEffect} from "react"
+import  useCart from "./cart"
+import Box from "./Box"
 const Footer = ()=>{
+    const {select, setSelect} = useCart();
     return(
 	<View style={_styles.container}>
 	{/* Checkout */}
 	<View style={_styles.checkout_con}>
-	<TouchableOpacity>
-	<View style={_styles.box}/>
-	</TouchableOpacity>
+	    <Box handlePress={()=> {
+		if(select.length == 10) setSelect([])
+	    }} enable={select.length==10}/>
 	    <Text style={{color:"black", fontSize:16}}>All</Text>
 	</View>
 

@@ -17,6 +17,9 @@ const OPTSection = ({ handlePress }) => {
 				<OtpInput
 					numberOfDigits={6}
 					type="numeric"
+					theme={{
+					    pinCodeTextStyle:{color:"black"}
+					}}
 					onTextChange={(text) => setValue(text)}
 				/>
 			</View>

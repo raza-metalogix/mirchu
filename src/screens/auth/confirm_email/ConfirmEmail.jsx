@@ -46,7 +46,6 @@ const ConfrimForm = ({ handlePress }) => {
 			validationSchema={confrimSchema}
 			onSubmit={val => {
 				setError("Email is not register yet.")
-				handlePress()
 			}}
 		>
 			{({ values, handleChange, handleSubmit, errors, touched }) => (
@@ -70,7 +69,7 @@ const ConfrimForm = ({ handlePress }) => {
 							text="SUBMIT"
 							color={colors.primary}
 							textColor="white"
-							handlePress={handleSubmit}
+							handlePress={handlePress}
 						/>
 					</View>
 

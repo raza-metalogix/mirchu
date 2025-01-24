@@ -5,19 +5,28 @@ import { useNavigation } from "@react-navigation/native"
 import routes from "../../../../navigations/routes"
 const Listing = () =>{
     const nav = useNavigation()
+    const handlePress= ()=> nav.navigate(routes.main_categories);
     return (
 	<View style={_styles.container}>
+	<View style={{alignItems:"flex-end",marginBottom:5}}>
+	    <TouchableOpacity
+		activeOpacity={0.5}
+		onPress={handlePress}
+	    >
+		<Text style={[_styles.btn_text,{marginRight:10}]}>See All</Text>
+	    </TouchableOpacity>
+	</View>
 	<FlatList 
-	    // scrollEnabled={false}
 	    showsVerticalScrollIndicator = {false}
 	    style={_styles.sub_container}
 	    data={context}
+	    ListHeaderComponent={()=> <View style={{height:5}}/>}
 	    ListFooterComponent={()=> <View style={{height:150}}/>}
-	    ItemSeparatorComponent={()=> <View style={{height:20}}/>}
+	    ItemSeparatorComponent={()=> <View style={{height:15}}/>}
 	    keyExtraction={(_,index)=> index.toString()}
 	    renderItem={({item,index})=>
 		<TouchableOpacity
-		onPress={()=> nav.navigate(routes.main_categories)}
+		onPress={handlePress}
 		activeOpacity={0.7}
 		style={[_styles.view_container, 
 		    index==4 && {backgroundColor:"#7AEB80"}
@@ -25,7 +34,7 @@ const Listing = () =>{
 		<Image style={_styles.img} source={{uri:item.img}} />
 		    <View style={{
 			marginLeft:10,
-			width:"63%"
+			width:"60%"
 		    }}>
 			<Text style={_styles.heading}>{item.heading}</Text>
 			<Text 
@@ -76,8 +85,8 @@ const _styles= StyleSheet.create({
     },
     view_container:{
 	backgroundColor:"#FFF9DE",
-	paddingVertical:20,
-	paddingHorizontal:10,
+	paddingVertical:10,
+	paddingHorizontal:5,
 	borderRadius:10,
 	flexDirection:"row",
 	alignItems:"center"
@@ -88,17 +97,22 @@ const _styles= StyleSheet.create({
     },
     heading:{
 	color:"black",
-	fontFamily: fonts.poppins_semiBold,
-	fontSize:16,
+	fontFamily: fonts.poppins_medium,
+	fontSize:14,
 	marginBottom:5,
 
     },
     txt:{
 	color:"black",
-	fontFamily: fonts.poppins_medium,
-	fontSize:14,
+	fontFamily: fonts.poppins_regular,
+	fontSize:12,
 	opacity:0.6,
     },
+    btn_text:{
+	fontSize: 16,
+	fontFamily: fonts.poppins_medium,
+	color: colors.secondary,
+    }
 })
 
 export default Listing

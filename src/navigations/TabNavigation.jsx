@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import {Platform} from "react-native"
+import {Platform, Text} from "react-native"
 import CategorySvg from "../assets/svgs/CategorySvg";
 import HomeSvg from "../assets/svgs/HomeSvg";
 import PersonSvg from "../assets/svgs/PersonSvg";
@@ -20,9 +20,10 @@ const TabNavigation = () => {
 	<Tab.Navigator
 	screenOptions={{
 	    headerShown: false,
+	    tabBarShowLabel: false,
 	    tabBarStyle:{
-		paddingTop:10,
-		height:Platform.OS == "ios" ? "9%" : 60,
+		paddingTop:Platform.OS == 'ios' ? 10:0,
+		height:Platform.OS == "ios" ? "7%" : 50,
 	    }
 	}}
 	>
@@ -30,7 +31,6 @@ const TabNavigation = () => {
 	name={routes.tab_listing}
 	component={ListingScreen}
 	options={{
-	    tabBarLabel: (el) => <TabLabel txt="Home" foc={el.focused} />,
 		tabBarIcon: (el) => {
 		    return <HomeSvg
 		    color={el.focused && colors.primary}
@@ -43,7 +43,6 @@ const TabNavigation = () => {
 	name={routes.tab_categroy}
 	component={CategoryScreen}
 	options={{
-	    tabBarLabel: (el) => <TabLabel txt="Categroy" foc={el.focused} />,
 		tabBarIcon: (el) =>
 		<CategorySvg
 	    color={el.focused && colors.primary}
@@ -55,7 +54,6 @@ const TabNavigation = () => {
 	name={routes.tab_cart}
 	component={CartScreen}
 	options={{
-	    tabBarLabel: (el) => <TabLabel txt="Cart" foc={el.focused} />,
 		tabBarIcon: (el) =>
 		<CartSvg
 	    color={el.focused && colors.primary}
@@ -67,7 +65,6 @@ const TabNavigation = () => {
 	name={routes.tab_account}
 	component={ProfileScreen}
 	options={{
-	    tabBarLabel: (el) => <TabLabel txt="Profile" foc={el.focused} />,
 		tabBarIcon: (el) =>
 		<PersonSvg
 	    color={el.focused && colors.primary}

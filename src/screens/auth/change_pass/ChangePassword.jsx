@@ -46,7 +46,7 @@ const ChangePassForm = ({ nav }) => {
 	<Formik
 	initialValues={{ pass: "", confirmPass: "" }}
 	validationSchema={changePassSchema}
-	onSubmit={val => nav.navigate(routes.tab)}
+	onSubmit={val => console.log(val)}
 	>
 	{({ values, handleChange, handleSubmit, errors, touched }) => (
 	    <View style={_styles.subContainer}>
@@ -89,7 +89,7 @@ const ChangePassForm = ({ nav }) => {
 	    text="Submit"
 	    color={colors.primary}
 	    textColor="white"
-	    handlePress={handleSubmit}
+	    handlePress={()=>nav.navigate(routes.tab)}
 	    />
 	    </View>
 

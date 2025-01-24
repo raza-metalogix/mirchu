@@ -1,58 +1,67 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native"
 import fonts from "../../../../utilities/fonts"
 import colors from "../../../../utilities/color"
-import {useState} from "react"
+import {useState,useEffect} from "react"
+import Box from "./Box"
+import useCart from "./cart"
 
-const Listing = () => {
+const Listing = ({index}) => {
     const [num, setNum] = useState(1)
+    const {select,selectAll, setSelect} = useCart()
+    const [show, setShow] = useState(false)
+    useEffect(()=>{
+	setShow(select.includes(index))
+    },[select, setSelect])
+    const handlePress = () => {
+	if(!show)  setSelect([...select,index])
+	else  setSelect(select.filter(el=> el != index && el))
+    }
     return (
 	<View style={_styles.container}>
-	{/* Checkout box */}
-	<TouchableOpacity>
-	<View style={_styles.box}/>
-	</TouchableOpacity>
-	{/* Cart */}
-	<View style={_styles.cart_container}>
-	{/* images */}
-	<Image 
-	    style={_styles.img}
-	    source={{uri:context.img}}
-	/>
-	{/*  sub container */}
-	<View style={{width:"66.1%"}}>
-	{/* context */}
-	<Text style={_styles.heading}>{context.heading.substr(0,20)}...</Text>
+	    {/* Checkout box */}
+	    <Box handlePress={handlePress} enable={show}/>
+	    {/* Cart */}
+	    <View style={_styles.cart_container}>
+		{/* images */}
+		<Image 
+		    style={_styles.img}
+		    source={{uri:context.img}}
+		/>
+	    {/*  sub container */}
+	    <View style={{width:"66.1%"}}>
+		{/* context */}
+		<Text style={_styles.heading}>{context.heading.substr(0,20)}...</Text>
 	
-	<View style={_styles.price_cont}>
-	{/* sub price */}
-	<View>
-	<Text style={_styles.price}>Rs. {context.price}</Text>
-	<Text style={_styles.price_sub}>Rs. {context.price}</Text>
-	</View>
-	{/* counter */}
-	<View style={_styles.count_con}>
+		<View style={_styles.price_cont}>
+		    {/* sub price */}
+		    <View>
+			<Text style={_styles.price}>Rs. {context.price}</Text>
+			<Text style={_styles.price_sub}>Rs. {context.price}</Text>
+		    </View>
+		    {/* counter */}
+		    <View style={_styles.count_con}>
 
-	<TouchableOpacity 
-	activeOpacity={0.5}
-	onPress={()=> num>1 && setNum(num-1)}
-	style={_styles.count_box}>
-	<Text style={{color:"black",opacity:0.5}}>-</Text>
-	</TouchableOpacity>
+		    <TouchableOpacity 
+			activeOpacity={0.5}
+			onPress={()=> num>1 && setNum(num-1)}
+			style={_styles.count_box}>
+			<Text style={{color:"black",opacity:0.5}}>-</Text>
+		    </TouchableOpacity>
 
-	<Text style={_styles.count_txt}>{num}</Text>
+		<Text style={_styles.count_txt}>{num}</Text>
 
-	<TouchableOpacity 
-	activeOpacity={0.5}
-	onPress={()=> num<7 && setNum(num+1)}
-	style={_styles.count_box}>
-	<Text style={{color:"black",opacity:0.5}}>+</Text>
-	</TouchableOpacity>
+		<TouchableOpacity 
+		    activeOpacity={0.5}
+		    onPress={()=> num<7 && setNum(num+1)}
+		    style={_styles.count_box}>
+		    <Text style={{color:"black",opacity:0.5}}>+</Text>
+		</TouchableOpacity>
 
-	</View>
-	{/* counter */}
-	</View>
-	</View>
-	</View>
+		    </View>
+
+		    </View>
+		</View>
+	    </View>
 	</View>
     );
 }
@@ -61,14 +70,6 @@ const _styles = StyleSheet.create({
     container:{
 	flexDirection:"row",
 	alignItems:"center",
-    },
-    box:{
-	width:18,
-	height:18,
-	borderWidth:1,
-	borderColor:"#666699",
-	borderRadius:5,
-	marginRight:12
     },
     cart_container:{
 	flexDirection:"row",

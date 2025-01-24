@@ -3,7 +3,7 @@ import fonts from "../../../../utilities/fonts"
 import colors from "../../../../utilities/color"
 const Listing = () =>{
     return(
-	<View style={{marginTop:20}}>
+	<View style={{marginTop:10}}>
 	    <FlatList 
 		data={[...Array(10)]}
 		keyExtraction={item=>item.toString()}
