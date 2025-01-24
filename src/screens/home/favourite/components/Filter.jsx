@@ -1,4 +1,4 @@
-import {View, Text, FlatList, TouchableOpacity, StyleSheet } from "react-native"
+import {View, Text, FlatList,Platform, TouchableOpacity, StyleSheet } from "react-native"
 import colors from "../../../../utilities/color"
 import fonts from "../../../../utilities/fonts"
 import {useState} from "react"
@@ -36,7 +36,7 @@ const Filter = ()=>{
 
 const _styles = StyleSheet.create({
     btn:{
-	paddingVertical:8,
+	paddingVertical: Platform.OS =="ios" ? 5 : 2,
 	paddingHorizontal:25,
 	alignItems:"center",
 	justifyContent:"center",

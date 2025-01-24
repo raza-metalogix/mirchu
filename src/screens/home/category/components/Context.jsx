@@ -6,7 +6,7 @@ const Context = ({txt}) => {
     const context = ["Milk", "Vegetable", "Meat", "Fruit"];
     const {select, setSelect} = useCategory()
     return (
-	<View style={{marginBottom:10}}>
+	<View>
 	<Text style={_styles.heading}>{txt || "Categories"}</Text>
 	</View>
     );

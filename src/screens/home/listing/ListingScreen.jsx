@@ -15,11 +15,12 @@ const ListingScreen = () => {
 	backgroundColor="white"
 	barStyle="dark-content"
 	/>
-	<HeaderCompo />
+	<HeaderCompo show={false} />
 	<FlatList
 	showsVerticalScrollIndicator={false}
 	data={[3]}
 	keyExtractor={(_, index) => index.toString()}
+	ListFooterComponent={()=> <View style={{height:100}}/>}
 	renderItem={({ _, index }) => <View
 	    key={index}>
 	    <ListerSwiper />
@@ -27,7 +28,6 @@ const ListingScreen = () => {
 	    <ListingProduct
 	    handlePress={handlePress}
 	    heading="Feature Product" />
-	    <ListingProduct heading="Popular Product" />
 	    </View>
 	}
 	/>
@@ -41,12 +41,6 @@ const _styles = StyleSheet.create({
 	flex: 1,
 	backgroundColor: "white"
     },
-    imgBanner: {
-	width: Dimensions.get("screen").width,
-	height: 200,
-	alignSelf: "flex-end",
-	marginVertical: 50,
-    }
 })
 
 export default ListingScreen

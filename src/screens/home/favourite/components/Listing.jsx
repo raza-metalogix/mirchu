@@ -1,4 +1,4 @@
-import {View, FlatList, Text, Image, StyleSheet} from "react-native"
+import {View, FlatList, Text,TouchableOpacity, Image, StyleSheet} from "react-native"
 import fonts from "../../../../utilities/fonts"
 import colors from "../../../../utilities/color"
 const Listing = () =>{
@@ -18,7 +18,10 @@ const Listing = () =>{
 
 const Component = () => {
     return (
-	<View style={_styles.container}> 
+	<TouchableOpacity
+	    style={_styles.container}
+	    activeOpacity={0.5}
+	> 
 	<Image
 	    source={{uri:context.img}}
 	    style={_styles.img}
@@ -35,15 +38,17 @@ const Component = () => {
 		</View>
 	    </View>
 	</View>
-	</View>
+	</TouchableOpacity>
     )
 }
 
 
 const _styles = StyleSheet.create({
     container:{
+	background:"white",
 	backgroundColor:"white",
-	flexDirection:"row"
+	flexDirection:"row",
+	alignItems:'center'
     },
     sub_container:{
 	marginTop:5,
@@ -56,8 +61,8 @@ const _styles = StyleSheet.create({
 	fontFamily: fonts.poppins_semiBold
     },
     img:{
-	width:100,
-	height:80,
+	width:"30%",
+	height:"90%",
 	borderRadius:10,
 	marginRight:12
     },

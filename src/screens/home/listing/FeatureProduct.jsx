@@ -1,15 +1,26 @@
-import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, Platform } from "react-native";
+import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, TouchableHighlight, Platform } from "react-native";
 import colors from "../../../utilities/color";
 import fonts from "../../../utilities/fonts";
 import { productImg } from "../../../utilities/images";
 const ListingProduct = ({ heading, handlePress }) => {
-    const context = [...Array(10)]
+    const context = [...Array(5)]
     return (
 	<View style={_style.container}>
 	<Text style={_style.heading}>{heading}</Text>
 	<FlatList
 	scrollEnabled={false}
 	data={context}
+	ListFooterComponent={()=> 
+	    <View style={_style.btn_container}>
+	    <TouchableHighlight
+	      activeOpacity={0.6}
+	    underlayColor="#DDDDDD"
+		onPress={()=> console.log()}
+		style={_style.btn}>
+		<Text style={_style.btn_txt}>View All</Text>
+	    </TouchableHighlight>
+	    </View>
+	}
 	ItemSeparatorComponent={() => <View style={{
 	    height: Platform.OS === "ios" ? 30 : 20,
 	}} />}
@@ -27,7 +38,8 @@ const ListingProduct = ({ heading, handlePress }) => {
 	    <Text
 	    style={{
 		color: "white",
-		    fontWeight: "600",
+		fontSize:10,
+		fontFamily: fonts.poppins_semiBold
 	    }}
 	    >
 	    90 %
@@ -35,7 +47,7 @@ const ListingProduct = ({ heading, handlePress }) => {
 	    </View>
 
 	    <Image
-	    source={productImg}
+	    source={{uri:"https://mirchu.pk/cdn/shop/files/1_165620e0-cde7-4c39-943b-d0a85275d4e1.png?v=1722239194&width=360"}}
 	    style={_style.img}
 	    />
 	    </View>
@@ -43,7 +55,7 @@ const ListingProduct = ({ heading, handlePress }) => {
 	    <View style={{ marginLeft: 0 }}>
 	    <Text
 	    style={{ color: "black", fontSize: 16 }}>
-	    Buy Coriander-Dhanya (سبز دھنیا) bunch
+	    Buy Coriander-Dhanya (سب...
 	    </Text>
 
 	    <View style={{ marginTop: 5 }}>
@@ -83,16 +95,19 @@ const ListingProduct = ({ heading, handlePress }) => {
 	    <Text
 	    style={{
 		textDecorationLine: "line-through",
-		    color: colors.secondary,
-		    fontSize: 12
+		fontSize: 12,
+		color:"black",
+		opacity:0.5,
+		fontFamily:fonts.poppins_medium
 	    }}>
 	    RS 120
 	    </Text>
 	    <Text style={{
-		color: colors.primary,
+		color: colors.secondary,
 		    fontSize: 16,
 		    fontWeight: "600",
-		    marginLeft: 10
+		    marginLeft: 10,
+		    fontFamily:fonts.poppins_semiBold
 	    }}>Rs 98</Text>
 	    </View>
 
@@ -101,12 +116,6 @@ const ListingProduct = ({ heading, handlePress }) => {
 	    </View>
 
 	    </View>
-	    </TouchableOpacity>
-	    <TouchableOpacity
-	    style={_style.addBtn}
-	    activeOpacity={0.5}
-	    >
-	    <Text style={_style.addText}>Shop</Text>
 	    </TouchableOpacity>
 	    </View>
 	}
@@ -117,14 +126,14 @@ const ListingProduct = ({ heading, handlePress }) => {
 
 const _style = StyleSheet.create({
     container: {
-	marginTop: 25,
+	marginTop: 30,
 	paddingHorizontal: 20,
     },
     heading: {
 	fontSize: 18,
 	fontFamily: fonts.poppins_bold,
 	color: colors.textSecondary,
-	marginBottom: 20,
+	marginBottom: 10,
     },
     box: {
 	position: "relative",
@@ -133,7 +142,6 @@ const _style = StyleSheet.create({
 	paddingTop: 20,
 	paddingRight: 5,
 	position: 'relative',
-	borderRadius: 6,
 	overflow: "hidden",
 	marginRight: 10
 
@@ -141,15 +149,17 @@ const _style = StyleSheet.create({
     img: {
 	width: 80,
 	height: 80,
+	borderRadius: 6,
+	resizeMode:"cover"
     },
     offTag: {
 	position: 'absolute',
 	right: 1,
 	top: 0,
 	zIndex: 1,
-	backgroundColor: colors.primary,
+	backgroundColor: colors.secondary,
 	paddingVertical: 2,
-	paddingHorizontal: 10
+	paddingHorizontal: 7
 
     },
     productContainer: {
@@ -179,6 +189,22 @@ const _style = StyleSheet.create({
 	color: "white",
 	fontSize: 16,
 	fontWeight: "600"
+    },
+    btn_container:{
+	alignItems:"flex-end",
+    },
+    btn:{
+	backgroundColor:"white",
+	width:"20%",
+	height:"35%",
+	alignItems:'center',
+	justifyContent:'center',
+	borderBottomWidth:2,
+	borderColor:colors.secondary,
+    },
+    btn_txt:{
+	color:"black",
+	fontFamily: fonts.poppins_medium
     }
 })
 

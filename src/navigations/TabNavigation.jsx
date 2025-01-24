@@ -1,4 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+import {Platform} from "react-native"
 import CategorySvg from "../assets/svgs/CategorySvg";
 import HomeSvg from "../assets/svgs/HomeSvg";
 import PersonSvg from "../assets/svgs/PersonSvg";
@@ -6,6 +7,7 @@ import CartSvg from "../assets/svgs/CartSvg";
 import TabLabel from "../components/TabLabel";
 import ListingScreen from "../screens/home/listing/ListingScreen";
 import SearhcScreen from "../screens/home/search/SearchScreen";
+import ProfileScreen from "../screens/home/profile/ProfileScreen";
 import CategoryScreen from "../screens/home/category/CategoryScreen" 
 import CartScreen from "../screens/home/cart/CartScreen"
 import colors from "../utilities/color";
@@ -20,7 +22,7 @@ const TabNavigation = () => {
 	    headerShown: false,
 	    tabBarStyle:{
 		paddingTop:10,
-		height:85,
+		height:Platform.OS == "ios" ? "9%" : 60,
 	    }
 	}}
 	>
@@ -63,7 +65,7 @@ const TabNavigation = () => {
 	/>
 	<Tab.Screen
 	name={routes.tab_account}
-	component={ListingScreen}
+	component={ProfileScreen}
 	options={{
 	    tabBarLabel: (el) => <TabLabel txt="Profile" foc={el.focused} />,
 		tabBarIcon: (el) =>

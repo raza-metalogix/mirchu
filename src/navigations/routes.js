@@ -18,6 +18,7 @@ const routes = {
 
 	home_purchase: "home_purchase",
 	main_categories: "main_categories",
+	main_checkout: "main_checkout",
 	
 
 	search: "main_search",

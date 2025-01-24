@@ -57,18 +57,19 @@ const BottomMenu = () => {
 	onLayout={(e) => height.value += e.nativeEvent.layout.height}
 	style={[_styles.container, sheetStyles]}
 	>
-	<TopHeader  />
-	<ImgList />
-	<QuantityCounter />
-
-	<View style={{ height:"100%", justifyContent:"center"}}>
+	    <View>
+		<TopHeader  />
+		<ImgList />
+		<QuantityCounter />
+	    </View>
+	<View style={{height:"50%",justifyContent:"flex-end"}}>
 	<Btns 
 	text={showCart == "cart" ? "Add to Cart" : "Buy"}
 	color={showCart == "cart"  ? colors.primary : colors.secondary}
 	textColor="white"
 	/>
-	</View>
 
+	</View>
 	</Animated.View>
 	</>
     );

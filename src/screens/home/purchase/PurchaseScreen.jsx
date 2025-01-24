@@ -1,5 +1,5 @@
 import { StyleSheet, View, StatusBar, Platform, FlatList } from "react-native"
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import ImageSwiper from "./ImageSwiper"
 import Context from "./Context"
 import Rating from "./Rating"

@@ -25,7 +25,7 @@ const ListerSwiper = () => {
 	    >
 	    <Image
 	    style={_styles.imgContainer}
-	    source={item}
+	    source={{uri: item}}
 	    />
 	    </View>
 	    </View>
@@ -51,8 +51,8 @@ const _styles = StyleSheet.create({
     },
     imgContainer: {
 	width: Dimensions.get("screen").width * 0.92,
-	height: 160,
-	resizeMode: 'contain',
+	height: 170,
+	resizeMode: 'cover',
 	borderRadius: 10,
     }
 })

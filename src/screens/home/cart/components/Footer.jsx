@@ -1,11 +1,10 @@
-import { TouchableOpacity, StyleSheet, View, Text, } from "react-native"
+import { TouchableOpacity, Dimensions, StyleSheet, View, Text, } from "react-native"
 import colors from "../../../../utilities/color"
 import fonts from "../../../../utilities/fonts"
 
 const Footer = ()=>{
     return(
 	<View style={_styles.container}>
-
 	{/* Checkout */}
 	<View style={_styles.checkout_con}>
 	<TouchableOpacity>
@@ -33,10 +32,17 @@ const Footer = ()=>{
 
 const _styles =  StyleSheet.create({
     container:{
-	paddingVertical:20,
+	position:"absolute",
+	bottom:0,
+	left:0,
+	height:80,
+	width:Dimensions.get("screen").width,
 	flexDirection:"row",
 	justifyContent:"space-between",
-	backgroundColor: "white"
+	backgroundColor: "white",
+	paddingHorizontal:20,
+	borderTopWidth:0.5,
+	borderColor:"#d1d1e0"
     },
     checkout_con:{
 	flexDirection:"row",

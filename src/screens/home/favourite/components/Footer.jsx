@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity, StyleSheet, Dimensions} from "react-native"
+import {View, Text, TouchableOpacity, Platform, StyleSheet, Dimensions} from "react-native"
 import {useNavigation} from "@react-navigation/native"
 import colors from "../../../../utilities/color"
 import fonts from "../../../../utilities/fonts"
@@ -27,13 +27,13 @@ const _styles = StyleSheet.create({
 	left:0,
 	zIndex:1,
 	paddingHorizontal:20,
-	paddingVertical:30,
+	paddingVertical:Platform.OS =="ios" ? 20: 10,
 	flexDirection:'row',
 	justifyContent:"flex-end",
 	alignItems:"center"
     },
     btn:{
-	paddingVertical:20,
+	paddingVertical: Platform.OS == "ios" ? 20 : 10,
 	paddingHorizontal:20,
 	marginLeft:20,
 	alignItems:"center",

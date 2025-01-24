@@ -1,5 +1,5 @@
 import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context"
-import {View, Text, StyleSheet, StatusBar, FlatList} from "react-native"
+import {View, StyleSheet, StatusBar, FlatList} from "react-native"
 import TopHeader from "../category/components/TopHeader"
 import Context from "./components/Context"
 import colors from "../../../utilities/color"
@@ -36,6 +36,7 @@ const CartScreen = () => {
 
 const _styles = StyleSheet.create({
     container:{
+	flex:1,
 	backgroundColor: "white",
 	paddingHorizontal:20
     }

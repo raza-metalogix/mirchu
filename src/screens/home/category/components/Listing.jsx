@@ -8,9 +8,11 @@ const Listing = () =>{
     return (
 	<View style={_styles.container}>
 	<FlatList 
-	    scrollEnabled={false}
+	    // scrollEnabled={false}
+	    showsVerticalScrollIndicator = {false}
 	    style={_styles.sub_container}
 	    data={context}
+	    ListFooterComponent={()=> <View style={{height:150}}/>}
 	    ItemSeparatorComponent={()=> <View style={{height:20}}/>}
 	    keyExtraction={(_,index)=> index.toString()}
 	    renderItem={({item,index})=>
@@ -20,8 +22,11 @@ const Listing = () =>{
 		style={[_styles.view_container, 
 		    index==4 && {backgroundColor:"#7AEB80"}
 		]}>
-		<Image style={_styles.img} source={item.img} />
-		    <View style={{marginLeft:12}}>
+		<Image style={_styles.img} source={{uri:item.img}} />
+		    <View style={{
+			marginLeft:10,
+			width:"63%"
+		    }}>
 			<Text style={_styles.heading}>{item.heading}</Text>
 			<Text 
 			    style={_styles.txt}>
@@ -37,22 +42,22 @@ const Listing = () =>{
 
 const context = [
     {
-	img:require("../../../../assets/images/categories/meat.png"), 
+	img:"https://mirchu.pk/cdn/shop/files/2_d5e19e07-9fbd-49a8-9c47-f7414f50bc05.png?v=1720696958&width=1100", 
 	heading:"Fresh Meat",
 	txt:"Get Low cost and High quality meat at your door."
     },
     {
-	img:require("../../../../assets/images/categories/vegetables.png"), 
+	img:"https://mirchu.pk/cdn/shop/files/4_38895e73-67c1-4c0c-9a44-998846bfb4fc.png?v=1720696957&width=1100", 
 	heading:"Clean Vegetables",
 	txt:"Real, fresh, health and modern. From farm to plate."
     },
     {
-	img:require("../../../../assets/images/categories/milk.png"), 
+	img:"https://mirchu.pk/cdn/shop/files/mlk.jpg?v=1725263243&width=1100", 
 	heading:"High quality milk",
 	txt:"Milk that meets high standards for quality."
     },
     {
-	img:require("../../../../assets/images/categories/fruit.png"), 
+	img:"https://mirchu.pk/cdn/shop/files/3_7c0e5268-66b2-42a7-9316-08f0028be2f2.png?v=1720696958&width=1100", 
 	heading:"Garden fresh Fruits",
 	txt:"Choose healthy. Be strong and live a long life."
     },
@@ -78,7 +83,7 @@ const _styles= StyleSheet.create({
 	alignItems:"center"
     },
     img:{
-	width:112,
+	width:"32%",
 	height:90,
     },
     heading:{
@@ -91,8 +96,8 @@ const _styles= StyleSheet.create({
     txt:{
 	color:"black",
 	fontFamily: fonts.poppins_medium,
+	fontSize:14,
 	opacity:0.6,
-	width:"72%"
     },
 })
 

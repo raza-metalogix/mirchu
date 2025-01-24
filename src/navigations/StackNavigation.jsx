@@ -11,6 +11,7 @@ import SearchScreen from "../screens/home/search/SearchScreen";
 import CategoryListingScreen from "../screens/home/category/CategoryListingScreen" 
 import CartScreen from "../screens/home/cart/CartScreen"
 import FavItemScreen from "../screens/home/favourite/FavItemScreen"
+import CheckoutScreen from "../screens/home/checkout/CheckoutScreen"
 import routes from "./routes";
 
 const Stack = createStackNavigator()
@@ -19,10 +20,9 @@ const StackNavigation = () => {
     return (
 	<Stack.Navigator
 	screenOptions={{ headerShown: false }}
-	// initialRouteName={routes.fav_items}
+	// initialRouteName={routes.main_checkout}
 	>
 	{/* Auth Screens */}
-	<Stack.Screen name={routes.nav_welcome} component={WelcomeScreen} />
 	<Stack.Screen name={routes.auth_login} component={LoginScreen} />
 	<Stack.Screen name={routes.auth_register} component={RegisterScreen} />
 	<Stack.Screen name={routes.auth_confirm} component={ConfrimEmail} />
@@ -37,6 +37,8 @@ const StackNavigation = () => {
 	<Stack.Screen name={routes.cart} component={CartScreen} />
 
 	<Stack.Screen name={routes.fav_items} component={FavItemScreen} />
+
+	<Stack.Screen name={routes.main_checkout} component={CheckoutScreen} />
 	</Stack.Navigator>
     );
 }

@@ -19,9 +19,9 @@ const Listing = () => {
 	    source={{uri:context.img}}
 	/>
 	{/*  sub container */}
-	<View>
+	<View style={{width:"66.1%"}}>
 	{/* context */}
-	<Text style={_styles.heading}>{context.heading.substr(0,25)}...</Text>
+	<Text style={_styles.heading}>{context.heading.substr(0,20)}...</Text>
 	
 	<View style={_styles.price_cont}>
 	{/* sub price */}
@@ -63,24 +63,25 @@ const _styles = StyleSheet.create({
 	alignItems:"center",
     },
     box:{
-	width:20,
-	height:20,
+	width:18,
+	height:18,
 	borderWidth:1,
 	borderColor:"#666699",
 	borderRadius:5,
 	marginRight:12
     },
     cart_container:{
-	flexDirection:"row"
+	flexDirection:"row",
+	alignItems:"center"
     },
     heading:{
 	color:"black",
 	fontSize:16,
-	fontFamily: fonts.poppins_semiBold
+	fontFamily: fonts.poppins_semiBold,
     },
     img:{
-	width:100,
-	height:80,
+	width:"25%",
+	height:70,
 	borderRadius:10,
 	marginRight:12
     },

@@ -16,7 +16,7 @@ const CategoryList = () => {
 
 	<Text 
 	style={_styles.headering}
-	>{context.heading.substr(0,18)}...
+	>{context.heading.substr(0,15)}...
 	</Text>
 
 	<View 
@@ -37,18 +37,8 @@ const CategoryList = () => {
 	</View>
 	</View>
 
+	</View>
 	{/* icons */}
-	<View style={_styles.iconsContainer}>
-	<TouchableOpacity style={{marginRight:5}}>
-	<HeartSvg style={_styles.back_svg} />	
-	</TouchableOpacity>
-
-	<TouchableOpacity>
-	<CartSvg style={_styles.back_svg} />	
-	</TouchableOpacity>
-	</View>
-
-	</View>
 
 	</View>
 
@@ -65,7 +55,7 @@ const _styles= StyleSheet.create({
     },
     img:{
 	width:"100%",
-	height:180,
+	height:150,
 	resizeMode:"cover"
     },
     twoContainer:{
@@ -79,10 +69,8 @@ const _styles= StyleSheet.create({
 	color:"black",
     },
     sub_container:{
-	marginTop:20,
+	marginTop:10,
 	flexDirection:"row",
-	alignItems:"flex-end",
-	justifyContent:"space-between"
     },
     cardContainer:{
 	width:"100%",
@@ -109,7 +97,7 @@ const _styles= StyleSheet.create({
 	alignItems:"center",
     },
     offTag:{
-	marginLeft:10,
+	marginLeft:20,
 	backgroundColor:"#FDE7E8",
 	width:50,
 	height:20,
@@ -127,9 +115,7 @@ const _styles= StyleSheet.create({
 	height:25,
 	opacity:0.8
     },
-    iconsContainer:{
-	flexDirection:"row",
-    }
+    
 })
 
 const context = {

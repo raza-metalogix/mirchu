@@ -7,6 +7,7 @@ import CartSvg from "../../../../assets/svgs/CartSvg"
 import SearchSvg from "../../../../assets/svgs/SearchSvg"
 import colors from "../../../../utilities/color"
 import fonts from "../../../../utilities/fonts"
+import routes from "../../../../navigations/routes"
 
 const TopHeader  = ({show}) => {
     const nav = useNavigation()
@@ -39,6 +40,7 @@ const TopHeader  = ({show}) => {
 	</TouchableOpacity>
 	{/* heart */}
 	<TouchableOpacity 
+	    onPress={()=>nav.navigate(routes.fav_items)}
 	    style={{marginRight:15,}}
 	>
 	<View style={_styles.tag_con}>

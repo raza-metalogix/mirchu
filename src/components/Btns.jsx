@@ -1,4 +1,4 @@
-import { TouchableOpacity, Text, StyleSheet } from "react-native"
+import { TouchableOpacity, Text, Platform, StyleSheet } from "react-native"
 import fonts from "../utilities/fonts";
 const Btns = ({ text, width, handlePress, color, textColor }) => {
     return (
@@ -22,15 +22,14 @@ const Btns = ({ text, width, handlePress, color, textColor }) => {
 }
 const _styles = StyleSheet.create({
     container: {
-	paddingVertical: 16,
+	paddingVertical: Platform.OS == "ios"?"5%": "5%",
 	alignItems: "center",
 	justifyContent: 'center',
 	borderRadius: 10,
     },
     text: {
-	fontFamily: fonts.poppins_medium,
-	fontSize: 20,
-	letterSpacing: 1.2,
+	fontFamily: fonts.poppins_semiBold,
+	fontSize: 17,
     }
 })
 

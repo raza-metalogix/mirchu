@@ -44,17 +44,16 @@ const PurchaseBtn = () => {
 
 const _styles = StyleSheet.create({
     container: {
-	marginTop: 10,
 	flexDirection: 'row',
 	alignItems: "center",
 	justifyContent: "space-between",
 	paddingHorizontal: 20,
 	paddingVertical: 5,
 	borderWidth: 1,
-	borderColor: "#e6e6e6"
+	borderColor: "#e6e6e6",
     },
     btn: {
-	width: 130,
+	width: "35%",
 	height: 50,
 	alignItems: "center",
 	justifyContent: "center",
