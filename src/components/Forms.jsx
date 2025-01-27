@@ -20,26 +20,28 @@ const Form = ({
 	    width: "100%",
 		marginBottom: customMargin || 0
 	}}>
-	<Text style={_styles.formText}>{context}</Text>
+	    {context && 
+		<Text style={_styles.formText}>{context}</Text>
+	    }
 	<View style={[_styles.inputContainer, {
 	    justifyContent: "flex-start"
 	}]}>
 	{svg}
 	<TextInput
-	keyboardType={typeInput}
-	value={value}
-	onChangeText={handleChange}
-	style={_styles.textInput}
-	placeholderTextColor="#d9d9d9"
-	placeholder={placehd}
-	maxLength={maxlength}
-	autoCapitalize='none'
-	secureTextEntry={secureText}
+	    keyboardType={typeInput}
+	    value={value}
+	    onChangeText={handleChange}
+	    style={_styles.textInput}
+	    placeholderTextColor="#D6D6DA"
+	    placeholder={placehd}
+	    maxLength={maxlength}
+	    autoCapitalize='none'
+	    secureTextEntry={secureText}
 	/>
 	{svgPass}
 	</View>
-	<Text style={_styles.pasText}>
-	{passText}
+	    <Text style={_styles.pasText}>
+	    {passText}
 	</Text>
 	</View>
     );

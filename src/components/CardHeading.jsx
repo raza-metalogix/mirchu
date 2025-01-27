@@ -6,12 +6,13 @@ const CardHeading = ({heading, btnText, handlePress}) => {
     return(
 	<View style={_styles.container}>
 	    <Text style={_styles.heading}>{heading || "Context"}</Text>
-	    <TouchableOpacity
-		activeOpacity={0.5}
-		onPress={handlePress}
-	    >
-		<Text style={[_styles.btn_text,{marginRight:10}]}>{btnText || "Btn"}</Text>
-	    </TouchableOpacity>
+	    { btnText && <TouchableOpacity
+		    activeOpacity={0.5}
+		    onPress={handlePress}
+		    >
+			<Text style={[_styles.btn_text,{marginRight:10}]}>{btnText || "Btn"}</Text>
+		</TouchableOpacity> 
+	    }
 	</View>
     );
 }

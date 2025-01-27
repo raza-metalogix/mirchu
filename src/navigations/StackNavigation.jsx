@@ -19,26 +19,26 @@ const Stack = createStackNavigator()
 const StackNavigation = () => {
     return (
 	<Stack.Navigator
-	screenOptions={{ headerShown: false }}
-	// initialRouteName={routes.main_checkout}
+	    screenOptions={{ headerShown: false }}
+	    // initialRouteName={routes.tab}
 	>
-	{/* Auth Screens */}
-	<Stack.Screen name={routes.auth_login} component={LoginScreen} />
-	<Stack.Screen name={routes.auth_register} component={RegisterScreen} />
-	<Stack.Screen name={routes.auth_confirm} component={ConfrimEmail} />
-	<Stack.Screen name={routes.auth_opt_pass} component={OPTScreen} />
-	<Stack.Screen name={routes.auth_change_pas} component={ChangePassword} />
-	<Stack.Screen name={routes.home_purchase} component={PurchaseScreen} />
-	{/* home Screen */}
-	<Stack.Screen name={routes.tab} component={TabNavigation} />
-	<Stack.Screen name={routes.search} component={SearchScreen} />
-	{/* other */}
-	<Stack.Screen name={routes.main_categories} component={CategoryListingScreen} />
-	<Stack.Screen name={routes.cart} component={CartScreen} />
+	    {/* Auth Screens */}
+	    <Stack.Screen name={routes.auth_login} component={LoginScreen} />
+	    <Stack.Screen name={routes.auth_register} component={RegisterScreen} />
+	    <Stack.Screen name={routes.auth_confirm} component={ConfrimEmail} />
+	    <Stack.Screen name={routes.auth_opt_pass} component={OPTScreen} />
+	    <Stack.Screen name={routes.auth_change_pas} component={ChangePassword} />
+	    <Stack.Screen name={routes.home_purchase} component={PurchaseScreen} />
+	    {/* home Screen */}
+	    <Stack.Screen name={routes.tab} component={TabNavigation} />
+	    <Stack.Screen name={routes.search} component={SearchScreen} />
+	    {/* other */}
+	    <Stack.Screen name={routes.main_categories} component={CategoryListingScreen} />
+	    <Stack.Screen name={routes.cart} component={CartScreen} />
 
-	<Stack.Screen name={routes.fav_items} component={FavItemScreen} />
+	    <Stack.Screen name={routes.fav_items} component={FavItemScreen} />
 
-	<Stack.Screen name={routes.main_checkout} component={CheckoutScreen} />
+	    <Stack.Screen name={routes.main_checkout} component={CheckoutScreen} />
 	</Stack.Navigator>
     );
 }

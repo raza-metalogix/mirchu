@@ -13,6 +13,7 @@ import { swipeImg } from "../../../utilities/images"
 import colors from "../../../utilities/color"
 import Btns from "../../../components/Btns"
 import fonts from "../../../utilities/fonts"
+import routes from "../../../navigations/routes"
 import Animated, {
     useSharedValue,
     useAnimatedStyle,
@@ -21,8 +22,10 @@ import Animated, {
     useDerivedValue
 } from 'react-native-reanimated'
 import useStore from "./store"
+import {useNavigation} from "@react-navigation/native"
 
 const BottomMenu = () => {
+    const nav = useNavigation()
     const {showCart, setShowCart} = useStore()
     const height = useSharedValue(0)
     const progress = useDerivedValue(() =>
@@ -64,6 +67,7 @@ const BottomMenu = () => {
 	    </View>
 	<View style={{height:"50%",justifyContent:"flex-end"}}>
 	<Btns 
+	handlePress={()=> showCart != "cart" && nav.navigate(routes.main_checkout) }
 	text={showCart == "cart" ? "Add to Cart" : "Buy"}
 	color={showCart == "cart"  ? colors.primary : colors.secondary}
 	textColor="white"

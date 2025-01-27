@@ -1,29 +1,19 @@
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native"
+import {View, Text, StyleSheet, TouchableOpacity, Image} from "react-native"
 import fonts from "../../../../utilities/fonts"
 import colors from "../../../../utilities/color"
-import {useState,useEffect} from "react"
-import Box from "./Box"
-import useCart from "./cart"
+import {useState} from "react"
 
-const Listing = ({index}) => {
-    const {selectAll, setSelectIndex, selectIndex, price, setPrice} = useCart()
+const context = {
+    img:"https://mirchu.pk/cdn/shop/files/1708200144.png?v=1721380505&width=360",
+    heading:"Buy Apple Golden Delicious(گولڈن ڈیلیشس سیب) - 1kg",
+    price:"210",
+}
+
+const List = () => {
     const [num, setNum] = useState(1)
-    
-    useEffect(()=> selectAll ?  setPrice(210  * 10) : setPrice(0)
-    ,[selectAll])
-
-    const handlePress = () => !selectIndex.includes(index) ?
-	setSelectIndex([index, ...selectIndex ]) || setPrice(price + 210)  :
-	setSelectIndex( selectIndex.filter(el=> el != index) ) || setPrice(price - 210)
-
     return (
 	<View style={_styles.container}>
-	    {/* Checkout box */}
-	    <Box handlePress={handlePress} enable={selectIndex.includes(index) || selectAll}/>
-	    {/* Cart */}
-	    <View style={_styles.cart_container}>
-		{/* images */}
-		<Image 
+	    <Image 
 		    style={_styles.img}
 		    source={{uri:context.img}}
 		/>
@@ -36,7 +26,6 @@ const Listing = ({index}) => {
 		    {/* sub price */}
 		    <View>
 			<Text style={_styles.price}>Rs. {context.price}</Text>
-			<Text style={_styles.price_sub}>Rs. {context.price}</Text>
 		    </View>
 		    {/* counter */}
 		    <View style={_styles.count_con}>
@@ -62,7 +51,6 @@ const Listing = ({index}) => {
 		    </View>
 		</View>
 	    </View>
-	</View>
     );
 }
 
@@ -87,6 +75,7 @@ const _styles = StyleSheet.create({
 	marginRight:12
     },
     price_cont:{
+	marginTop:6,
 	flexDirection:"row",
 	alignItems:"flex-end",
 	justifyContent:"space-between"
@@ -117,13 +106,7 @@ const _styles = StyleSheet.create({
 	color:"black",
 	marginHorizontal:14
     }
+
 })
 
-
-const context = {
-    img:"https://mirchu.pk/cdn/shop/files/1708200144.png?v=1721380505&width=360",
-    heading:"Buy Apple Golden Delicious(گولڈن ڈیلیشس سیب) - 1kg",
-    price:"210",
-}
-
-export default Listing
+export default List

@@ -6,7 +6,7 @@ import CategoryList from "./components/CategoryList"
 const CategoryListingScreen = () => {
     return(
 	<SafeAreaProvider>
-	<SafeAreaView
+    <SafeAreaView
 	    style={_styles.container}
 	>
 	<StatusBar 
@@ -37,8 +37,6 @@ const CategoryListingScreen = () => {
 	    </>
 
 	}
-	keyExtraction={(_,index)=> index.toString()}
-	showsVerticalScrollIndicator={false}
 	renderItem={({_})=>
 	    <CategoryList/>
 	}

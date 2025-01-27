@@ -2,33 +2,35 @@ import { TouchableOpacity, Dimensions, StyleSheet, View, Text, } from "react-nat
 import colors from "../../../../utilities/color"
 import fonts from "../../../../utilities/fonts"
 import {useState, useEffect} from "react"
-import  useCart from "./cart"
+import useCart from "./cart"
 import Box from "./Box"
 const Footer = ()=>{
-    const {select, setSelect} = useCart();
+    const {selectAll, price, setSelectAll,setSelectIndex} = useCart()
+    const [tick, setTick] = useState(false) 
     return(
 	<View style={_styles.container}>
 	{/* Checkout */}
 	<View style={_styles.checkout_con}>
 	    <Box handlePress={()=> {
-		if(select.length == 10) setSelect([])
-	    }} enable={select.length==10}/>
+		setSelectAll(!selectAll)
+		setSelectIndex([])
+	    }} enable={selectAll}/>
 	    <Text style={{color:"black", fontSize:16}}>All</Text>
 	</View>
 
+	{ price != 0 &&
 	<View style={_styles.sub_container}>
 	{/* total */}
 	<View style={_styles.total_con}>
 	    <Text style={_styles.sub_total}>Subtotal :</Text>
-	    <Text style={_styles.total}>Rs. 90</Text>
+	    <Text style={_styles.total}>Rs. {price}</Text>
 	</View>
-	
 	<TouchableOpacity style={_styles.btn}>
 	    <Text style={_styles.btn_txt}>Checkout</Text>
 	</TouchableOpacity>
 
 	</View>
-
+	}	
 	</View>
     );
 }

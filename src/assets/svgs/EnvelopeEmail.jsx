@@ -1,7 +1,8 @@
 import { Path, Svg, G } from "react-native-svg"
-const EnvelopeEmail = ({ styles }) => (
+const EnvelopeEmail = ({ styles,color }) => (
 	<Svg
-		fill="#000000" style={styles} viewBox="-5.5 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+		fill={color || "#000000"} style={styles}
+		viewBox="-5.5 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
 		<G id="SVGRepo_bgCarrier" strokeWidth="0"></G>
 		<G id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></G>
 		<G id="SVGRepo_iconCarrier">

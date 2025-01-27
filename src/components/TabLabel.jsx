@@ -6,7 +6,8 @@ const TabLabel = ({ txt, foc }) => {
 	<Text style={{
 	    color: foc ? colors.primary : colors.textSecondary,
 		fontFamily: fonts.poppins_regular,
-		opacity: 0.6
+		opacity: 0.6,
+		fontSize:10
 	}}
 	>
 	{txt}

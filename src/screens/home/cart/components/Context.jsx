@@ -19,9 +19,6 @@ const Context = ({show, txt}) => {
 	
 	</View>
 
-	<TouchableOpacity>
-	    <DeleteSvg style={_styles.svg} />
-	</TouchableOpacity>
 
 	</View>
     );
@@ -43,11 +40,6 @@ const _styles = StyleSheet.create({
 	fontFamily:fonts.poppins_semiBold,
 	color:"black",
     },
-    svg:{
-	width:25,
-	height:25,
-	opacity:0.7
-    }
 })
 
 export default Context;

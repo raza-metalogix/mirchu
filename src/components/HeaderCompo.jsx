@@ -9,7 +9,7 @@ import colors from "../utilities/color"
 import fonts from "../utilities/fonts"
 import { useNavigation } from "@react-navigation/native"
 import routes from "../navigations/routes"
-const HeaderCompo = ({show, txt, border, showlogo, search, heart, cart, del}) => {
+const HeaderCompo = ({show, txt, border, showlogo, search, heart, cart, del, onDelPress}) => {
     const nav = useNavigation()
     return (
 	<View style={[_style.container, border && {
@@ -93,7 +93,7 @@ const HeaderCompo = ({show, txt, border, showlogo, search, heart, cart, del}) =>
 		  </View>
 	</TouchableOpacity> }  
 	{del && 
-	<TouchableOpacity>
+	<TouchableOpacity onPress={onDelPress}>
 	    <DeleteSvg style={_style.svg} />
 	</TouchableOpacity>
 	}
